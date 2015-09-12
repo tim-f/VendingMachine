@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine.Core", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine.Presentation.Wpf", "src\VendingMachine.Presentation.Wpf\VendingMachine.Presentation.Wpf.csproj", "{103A9C5F-888F-4349-8A57-B31FBD77D6BE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E6F50302-1CB3-4F3C-AFCC-95674C41ABE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{934240CD-F4F0-47E4-9055-2FDD53A59454}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{527FF145-2280-4234-8679-00B4CA6C2C0F} = {E6F50302-1CB3-4F3C-AFCC-95674C41ABE1}
+		{103A9C5F-888F-4349-8A57-B31FBD77D6BE} = {E6F50302-1CB3-4F3C-AFCC-95674C41ABE1}
 	EndGlobalSection
 EndGlobal
