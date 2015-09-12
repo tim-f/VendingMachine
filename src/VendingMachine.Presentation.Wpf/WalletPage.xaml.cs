@@ -5,7 +5,7 @@ namespace VendingMachine.Presentation.Wpf
     /// <summary>
     /// Interaction logic for WalletPage.xaml
     /// </summary>
-    public partial class WalletPage
+    public sealed partial class WalletPage
     {
         public WalletPage(Wallet wallet)
         {
