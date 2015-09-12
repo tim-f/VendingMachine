@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppModel\CoinSet.cs" />
+    <Compile Include="Commands\AlwaysEnabledCommand.cs" />
+    <Compile Include="Commands\CommandComposition.cs" />
+    <Compile Include="Commands\CommandWrapper.cs" />
+    <Compile Include="Commands\IActionCommand.cs" />
     <Compile Include="WalletPage.xaml.cs">
       <DependentUpon>WalletPage.xaml</DependentUpon>
     </Compile>
