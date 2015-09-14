@@ -12,10 +12,12 @@
         <ListView ItemsSource="{Binding Coins}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Value}" />
-                        <TextBlock Text="{Binding Count}" />
-                    </StackPanel>
+                    <Button>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Value, StringFormat={}{0:C}}" Padding="5" />
+                            <TextBlock Text="{Binding Count, StringFormat={}{0} штук}" Padding="5" />
+                        </StackPanel>
+                    </Button>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
