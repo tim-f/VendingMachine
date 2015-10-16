@@ -30,7 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Coin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserWallet.cs" />
+    <Compile Include="WalletIsOutOfSuchCoinException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="JetBrains.Annotations, Version=9.2.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
