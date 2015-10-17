@@ -11,7 +11,7 @@ namespace VendingMachine.Core
             Value = value;
         }
 
-        public static Coin FromValue(decimal value)
+        internal static Coin FromValue(decimal value)
         {
             return new Coin(value);
         }

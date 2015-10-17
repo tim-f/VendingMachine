@@ -10,11 +10,13 @@ namespace VendingMachine.Core
         private const int ZeroCoins = 0;
         private const int SingleCoinPiece = 1;
 
-        private Dictionary<Coin, int> Coins { get; } = new Dictionary<Coin, int>();
+        private IDictionary<Coin, int> Coins { get; }
 
-        public UserWallet()
+        public UserWallet(CoinSet coinSet)
         {
-
+            var supportedCoinTypes = coinSet.GetSupportedCoinTypes();
+            Coins = new Dictionary<Coin, int>(supportedCoinTypes.ToDictionary(coin => coin, coin => ZeroCoins));
+            
         }
 
         public void Put([NotNull] Coin coin, int count)
@@ -30,9 +32,9 @@ namespace VendingMachine.Core
             }
         }
 
-        public bool HasThisTypeOfCoin([NotNull] Coin coin)
+        public bool HasCoinsOf([NotNull] Coin coin)
         {
-            return Coins.ContainsKey(coin);
+            return Coins[coin] > ZeroCoins;
         }
 
 
@@ -44,16 +46,35 @@ namespace VendingMachine.Core
 
         private void WithdrawSingle([NotNull] Coin coin)
         {
-            if (!HasThisTypeOfCoin(coin))
+            if (!HasCoinsOf(coin))
             {
                 throw new WalletIsOutOfSuchCoinException(coin);
             }
 
             Coins[coin] -= SingleCoinPiece;
-            if (Coins[coin] == ZeroCoins)
-            {
-                Coins.Remove(coin);
-            }
+        }
+    }
+
+    public class CoinSet
+    {
+        private HashSet<Coin> Coins { get; } = new HashSet<Coin>(EnumerateSupportedCoinTypes());
+
+        public IReadOnlyCollection<Coin> GetSupportedCoinTypes()
+        {
+            return Coins.ToList();
+        }
+
+        public bool IsSupported(Coin coin)
+        {
+            return Coins.Contains(coin);
+        }
+
+        private static IEnumerable<Coin> EnumerateSupportedCoinTypes()
+        {
+            yield return Coin.FromValue(1M);
+            yield return Coin.FromValue(2M);
+            yield return Coin.FromValue(5M);
+            yield return Coin.FromValue(10M);
         }
     }
 }
