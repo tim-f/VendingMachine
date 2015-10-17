@@ -3,11 +3,11 @@
 namespace VendingMachine.Core
 {
     [Serializable]
-    public class WalletIsOutOfSuchCoinException : Exception
+    public class StashIsOutOfSuchCoinException : Exception
     {
         private Coin Coin { get; }
 
-        public WalletIsOutOfSuchCoinException(Coin coin)
+        public StashIsOutOfSuchCoinException(Coin coin)
         {
             Coin = coin;
         }

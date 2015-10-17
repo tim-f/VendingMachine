@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace VendingMachine.Core
 {
-    public class SupportedCoinTypes
+    public class SupportedCoinTypesInformant
     {
         private HashSet<Coin> Coins { get; } = new HashSet<Coin>(EnumerateSupportedCoinTypes());
 

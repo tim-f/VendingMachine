@@ -4,6 +4,7 @@
     {
         private int _count;
         private decimal _value;
+        private bool _hasAny;
 
         public decimal Value
         {
@@ -12,7 +13,7 @@
             {
                 if (value == _value) return;
                 _value = value;
-                OnPropertyChanged(nameof(Value));
+                OnPropertyChanged();
             }
         }
 
@@ -23,7 +24,18 @@
             {
                 if (value == _count) return;
                 _count = value;
-                OnPropertyChanged(nameof(Count));
+                OnPropertyChanged();
+            }
+        }
+
+        public bool HasAny
+        {
+            get { return _hasAny; }
+            set
+            {
+                if (_hasAny == value) return;
+                _hasAny = value;
+                OnPropertyChanged();
             }
         }
     }

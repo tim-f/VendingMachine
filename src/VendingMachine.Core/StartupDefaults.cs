@@ -4,9 +4,9 @@ namespace VendingMachine.Core
 {
     public static class StartupDefaults
     {
-        public static UserWallet CreateDefaultUserWallet()
+        public static CoinStash CreateDefaultUserWallet()
         {
-            var userWallet = new UserWallet(new SupportedCoinTypes());
+            var userWallet = new CoinStash(new SupportedCoinTypesInformant());
             userWallet.Put(new Dictionary<Coin, int>(4)
             {
                 { Coin.FromValue(1M), 10 },
