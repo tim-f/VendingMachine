@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 
 namespace VendingMachine.Presentation.Wpf.AppModel
 {
-    public abstract class AppModelBase : INotifyPropertyChanged
+    public abstract class AppModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -1,11 +1,11 @@
-﻿<Page x:Class="VendingMachine.Presentation.Wpf.WalletPage"
+﻿<Page x:Class="VendingMachine.Presentation.Wpf.UserWalletPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:appModel="clr-namespace:VendingMachine.Presentation.Wpf.AppModel"
       mc:Ignorable="d"
-      d:DataContext="{d:DesignInstance appModel:Wallet }"
+      d:DataContext="{d:DesignInstance appModel:UserWallet }"
       >
 
     <Grid>

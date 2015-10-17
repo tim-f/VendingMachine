@@ -4,26 +4,26 @@ namespace VendingMachine.Presentation.Wpf.Commands
 {
     public static class CommandWrapper
     {
-        public static ICommand Wrap(this IActionCommand command)
+        public static ICommand Wrap(this IChainCommand command)
         {
             return new CommandAdapter(command);
         }
 
-        public static ICommand Wrap<TInput>(this IActionCommand<TInput> command)
+        public static ICommand Wrap<TInput>(this IChainCommand<TInput> command)
         {
             return new CommandAdapter<TInput>(command);
         }
 
-        public static ICommand Wrap<TInput, TOutput>(this IActionCommand<TInput, TOutput> command)
+        public static ICommand Wrap<TInput, TOutput>(this IChainCommand<TInput, TOutput> command)
         {
             return new CommandAdapter<TInput, TOutput>(command);
         }
 
         private class CommandAdapter : AlwaysEnabledCommand
         {
-            private readonly IActionCommand _command;
+            private readonly IChainCommand _command;
 
-            public CommandAdapter(IActionCommand command)
+            public CommandAdapter(IChainCommand command)
             {
                 _command = command;
             }
@@ -36,9 +36,9 @@ namespace VendingMachine.Presentation.Wpf.Commands
 
         private class CommandAdapter<TInput> : AlwaysEnabledCommand<TInput>
         {
-            private readonly IActionCommand<TInput> _command;
+            private readonly IChainCommand<TInput> _command;
 
-            public CommandAdapter(IActionCommand<TInput> command)
+            public CommandAdapter(IChainCommand<TInput> command)
             {
                 _command = command;
             }
@@ -51,9 +51,9 @@ namespace VendingMachine.Presentation.Wpf.Commands
 
         private class CommandAdapter<TInput, TOutput> : AlwaysEnabledCommand<TInput>
         {
-            private readonly IActionCommand<TInput, TOutput> _command;
+            private readonly IChainCommand<TInput, TOutput> _command;
 
-            public CommandAdapter(IActionCommand<TInput, TOutput> command)
+            public CommandAdapter(IChainCommand<TInput, TOutput> command)
             {
                 _command = command;
             }

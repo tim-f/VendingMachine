@@ -1,6 +1,6 @@
 ﻿namespace VendingMachine.Presentation.Wpf.AppModel
 {
-    public sealed class CoinSet : AppModelBase
+    public sealed class CoinSet : AppModel
     {
         private int _count;
         private decimal _value;

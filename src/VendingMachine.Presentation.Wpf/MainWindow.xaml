@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:appModel="clr-namespace:VendingMachine.Presentation.Wpf.AppModel"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance appModel:Wallet }"
+        d:DataContext="{d:DesignInstance appModel:UserWallet }"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>

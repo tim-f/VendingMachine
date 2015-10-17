@@ -62,10 +62,10 @@
     <Compile Include="Commands\AlwaysEnabledCommand.cs" />
     <Compile Include="Commands\CommandComposition.cs" />
     <Compile Include="Commands\CommandWrapper.cs" />
-    <Compile Include="Commands\IActionCommand.cs" />
+    <Compile Include="Commands\IChainCommand.cs" />
     <Compile Include="Navigation\INavigationService.cs" />
-    <Compile Include="WalletPage.xaml.cs">
-      <DependentUpon>WalletPage.xaml</DependentUpon>
+    <Compile Include="UserWalletPage.xaml.cs">
+      <DependentUpon>UserWalletPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -75,13 +75,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AppModel\AppModelBase.cs" />
-    <Compile Include="AppModel\Wallet.cs" />
+    <Compile Include="AppModel\AppModel.cs" />
+    <Compile Include="AppModel\UserWallet.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="WalletPage.xaml">
+    <Page Include="UserWalletPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

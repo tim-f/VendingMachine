@@ -5,49 +5,49 @@ namespace VendingMachine.Presentation.Wpf.Commands
 {
     public static class CommandComposition
     {
-        public static IActionCommand<TInput> Fork<TInput>(this IActionCommand<TInput> firstCommand, IActionCommand<TInput> secondCommand)
+        public static IChainCommand<TInput> Fork<TInput>(this IChainCommand<TInput> firstCommand, IChainCommand<TInput> secondCommand)
         {
-            ForkActionCommand<TInput> forkActionCommand = firstCommand as ForkActionCommand<TInput>;
-            if (forkActionCommand == null)
+            ForkChainCommand<TInput> forkChainCommand = firstCommand as ForkChainCommand<TInput>;
+            if (forkChainCommand == null)
             {
-                forkActionCommand = new ForkActionCommand<TInput>();
-                forkActionCommand.AddCommand(firstCommand);
+                forkChainCommand = new ForkChainCommand<TInput>();
+                forkChainCommand.AddCommand(firstCommand);
             }
-            forkActionCommand.AddCommand(secondCommand);
-            return forkActionCommand;
+            forkChainCommand.AddCommand(secondCommand);
+            return forkChainCommand;
         }
 
-        public static IActionCommand<object> StartWith<TInput>(Func<TInput> source, IActionCommand<TInput> command)
+        public static IChainCommand<object> StartWith<TInput>(Func<TInput> source, IChainCommand<TInput> command)
         {
             return new AnonymousChainedCommand<object>(o => command.Execute(source()));
         }
 
-        public static IActionCommand<object, TOutput> StartWith<TInput, TOutput>(Func<TInput> source, IActionCommand<TInput, TOutput> command)
+        public static IChainCommand<object, TOutput> StartWith<TInput, TOutput>(Func<TInput> source, IChainCommand<TInput, TOutput> command)
         {
             return new AnonymousChainedCommand<object, TOutput>(o => command.Execute(source()));
         }
 
-        public static IActionCommand<TInput, TOutput> ContinueWith<TInput, TIntermediate, TOutput>(this IActionCommand<TInput, TIntermediate> firstCommand, Func<TIntermediate, TOutput> secondCommandExecute)
+        public static IChainCommand<TInput, TOutput> ContinueWith<TInput, TIntermediate, TOutput>(this IChainCommand<TInput, TIntermediate> firstCommand, Func<TIntermediate, TOutput> secondCommandExecute)
         {
             return new AnonymousChainedCommand<TInput, TOutput>(input => secondCommandExecute(firstCommand.Execute(input)));
         }
 
-        public static IActionCommand<TInput> ContinueWith<TInput, TIntermediate>(this IActionCommand<TInput, TIntermediate> firstCommand, IActionCommand<TIntermediate> secondCommand)
+        public static IChainCommand<TInput> ContinueWith<TInput, TIntermediate>(this IChainCommand<TInput, TIntermediate> firstCommand, IChainCommand<TIntermediate> secondCommand)
         {
             return new AnonymousChainedCommand<TInput>(input => secondCommand.Execute(firstCommand.Execute(input)));
         }
 
-        public static IActionCommand<TInput, TOutput> ContinueWith<TInput, TIntermediate, TOutput>(this IActionCommand<TInput, TIntermediate> firstCommand, IActionCommand<TIntermediate, TOutput> secondCommand)
+        public static IChainCommand<TInput, TOutput> ContinueWith<TInput, TIntermediate, TOutput>(this IChainCommand<TInput, TIntermediate> firstCommand, IChainCommand<TIntermediate, TOutput> secondCommand)
         {
             return new AnonymousChainedCommand<TInput, TOutput>(input => secondCommand.Execute(firstCommand.Execute(input)));
         }
 
 
-        private class ForkActionCommand<T> : IActionCommand<T>
+        private class ForkChainCommand<T> : IChainCommand<T>
         {
-            private readonly List<IActionCommand<T>> _commands = new List<IActionCommand<T>>();
+            private readonly List<IChainCommand<T>> _commands = new List<IChainCommand<T>>();
 
-            public void AddCommand(IActionCommand<T> command)
+            public void AddCommand(IChainCommand<T> command)
             {
                 _commands.Add(command);
             }
@@ -61,7 +61,7 @@ namespace VendingMachine.Presentation.Wpf.Commands
             }
         }
 
-        private class AnonymousChainedCommand<TInput> : IActionCommand<TInput>
+        private class AnonymousChainedCommand<TInput> : IChainCommand<TInput>
         {
             private readonly Action<TInput> _executeDelegate;
 
@@ -76,7 +76,7 @@ namespace VendingMachine.Presentation.Wpf.Commands
             }
         }
 
-        private class AnonymousChainedCommand<TInput, TOutput> : IActionCommand<TInput, TOutput>
+        private class AnonymousChainedCommand<TInput, TOutput> : IChainCommand<TInput, TOutput>
         {
             private readonly Func<TInput, TOutput> _executeDelegate;
 

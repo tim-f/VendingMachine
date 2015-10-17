@@ -11,13 +11,13 @@ namespace VendingMachine.Presentation.Wpf
         {
             InitializeComponent();
 
-            Wallet wallet = new Wallet();
-            wallet.Coins.Add(new CoinSet { Value = 1M, Count = 10 });
-            wallet.Coins.Add(new CoinSet { Value = 2M, Count = 10 });
-            wallet.Coins.Add(new CoinSet { Value = 5M, Count = 10 });
-            wallet.Coins.Add(new CoinSet { Value = 10M, Count = 10 });
+            UserWallet userWallet = new UserWallet();
+            userWallet.Coins.Add(new CoinSet { Value = 1M, Count = 10 });
+            userWallet.Coins.Add(new CoinSet { Value = 2M, Count = 10 });
+            userWallet.Coins.Add(new CoinSet { Value = 5M, Count = 10 });
+            userWallet.Coins.Add(new CoinSet { Value = 10M, Count = 10 });
 
-            Wallet.NavigationService.Navigate(new WalletPage(wallet));
+            Wallet.NavigationService.Navigate(new UserWalletPage(userWallet));
         }
     }
 }

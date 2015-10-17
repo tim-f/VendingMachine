@@ -2,7 +2,7 @@
 
 namespace VendingMachine.Presentation.Wpf.AppModel
 {
-    public sealed class Wallet : AppModelBase
+    public sealed class UserWallet : AppModel
     {
         public ObservableCollection<CoinSet> Coins { get; } = new ObservableCollection<CoinSet>();
     }

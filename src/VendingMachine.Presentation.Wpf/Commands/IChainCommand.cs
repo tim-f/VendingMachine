@@ -1,16 +1,16 @@
 ﻿namespace VendingMachine.Presentation.Wpf.Commands
 {
-    public interface IActionCommand
+    public interface IChainCommand
     {
         void Execute();
     }
 
-    public interface IActionCommand<in TInput>
+    public interface IChainCommand<in TInput>
     {
         void Execute(TInput parameter);
     }
 
-    public interface IActionCommand<in TInput, out TOutput>
+    public interface IChainCommand<in TInput, out TOutput>
     {
         TOutput Execute(TInput parameter);
     }
