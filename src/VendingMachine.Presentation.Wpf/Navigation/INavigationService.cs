@@ -8,6 +8,7 @@ namespace VendingMachine.Presentation.Wpf.Navigation
     {
         void ShowUserWallet();
         void ShowVendingMachineWallet();
+        void ShowCoinReceptacle();
         void ShowVendingMachineMenu();
     }
 
@@ -17,13 +18,25 @@ namespace VendingMachine.Presentation.Wpf.Navigation
         private MainWindow MainWindow => ((MainWindow)Application.Current.MainWindow);
 
         [NotNull]
-        private Frame UserWalletFrame => MainWindow.Wallet;
+        private Frame UserWalletFrame => MainWindow.UserWallet;
 
         [NotNull]
-        private Frame VendingMachineWalletFrame => MainWindow.VendingMachine;
+        private Frame VendingMachineWalletFrame => MainWindow.VmWallet;
+
+        [NotNull]
+        private Frame CoinReceptacleFrame => MainWindow.CoinReceptacle;
+
+        [NotNull]
+        private Frame VendingMachineMenuFrame => MainWindow.VmMenu;
+
 
 
         public void ShowVendingMachineWallet()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ShowCoinReceptacle()
         {
             throw new System.NotImplementedException();
         }

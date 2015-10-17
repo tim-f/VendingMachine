@@ -17,7 +17,7 @@ namespace VendingMachine.Presentation.Wpf
             userWallet.Coins.Add(new CoinSet { Value = 5M, Count = 10 });
             userWallet.Coins.Add(new CoinSet { Value = 10M, Count = 10 });
 
-            Wallet.NavigationService.Navigate(new UserWalletPage(userWallet));
+            UserWallet.NavigationService.Navigate(new UserWalletPage(userWallet));
         }
     }
 }

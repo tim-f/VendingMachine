@@ -12,13 +12,25 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-        <GroupBox Grid.Column="0" Header="Wallet">
-            <Frame x:Name="Wallet" />
+        <GroupBox Grid.Column="0" Grid.Row="0" Header="User Wallet">
+            <Frame x:Name="UserWallet" />
         </GroupBox>
 
-        <GroupBox Grid.Column="1" Header="Vending Machine Terminal">
-            <Frame x:Name="VendingMachine" />
+        <GroupBox Grid.Column="0" Grid.Row="1" Header="VM Wallet">
+            <Frame x:Name="VmWallet" />
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="0" Header="Coin Receptacle">
+            <Frame x:Name="CoinReceptacle" />
+        </GroupBox>
+        
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="VM Menu">
+            <Frame x:Name="VmMenu" />
         </GroupBox>
         
     </Grid>
