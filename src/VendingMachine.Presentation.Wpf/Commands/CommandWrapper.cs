@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using VendingMachine.ApplicationLogic.Utility;
 
 namespace VendingMachine.Presentation.Wpf.Commands
 {

@@ -17,20 +17,20 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Column="0" Grid.Row="0" Header="User Wallet">
+        <GroupBox Grid.Column="0" Grid.Row="0" Header="Кошелек пользователя">
             <Frame x:Name="UserWallet" />
         </GroupBox>
 
-        <GroupBox Grid.Column="0" Grid.Row="1" Header="VM Wallet">
-            <Frame x:Name="VmWallet" />
+        <GroupBox Grid.Column="0" Grid.Row="1" Header="Кошелек VM">
+            <Frame x:Name="MachineWallet" />
         </GroupBox>
 
-        <GroupBox Grid.Column="1" Grid.Row="0" Header="Coin Receptacle">
-            <Frame x:Name="CoinReceptacle" />
+        <GroupBox Grid.Column="1" Grid.Row="0" Header="Внесенная сумма">
+            <Frame x:Name="CashDeposit" />
         </GroupBox>
         
-        <GroupBox Grid.Column="1" Grid.Row="1" Header="VM Menu">
-            <Frame x:Name="VmMenu" />
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="Ассортимент товаров">
+            <Frame x:Name="GoodsMenu" />
         </GroupBox>
         
     </Grid>

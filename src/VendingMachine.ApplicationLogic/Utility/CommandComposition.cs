@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace VendingMachine.Presentation.Wpf.Commands
+namespace VendingMachine.ApplicationLogic.Utility
 {
     public static class CommandComposition
     {

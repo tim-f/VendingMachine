@@ -1,4 +1,4 @@
-﻿namespace VendingMachine.Presentation.Wpf.Commands
+namespace VendingMachine.ApplicationLogic.Utility
 {
     public interface IChainCommand
     {

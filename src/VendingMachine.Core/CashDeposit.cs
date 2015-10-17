@@ -1,6 +1,6 @@
 ﻿namespace VendingMachine.Core
 {
-    public class CoinReceptacle
+    public class CashDeposit
     {
          
     }

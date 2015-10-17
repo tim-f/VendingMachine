@@ -1,4 +1,7 @@
-﻿namespace VendingMachine.Presentation.Wpf
+﻿using VendingMachine.ApplicationLogic.Commands;
+using VendingMachine.Presentation.Wpf.Navigation;
+
+namespace VendingMachine.Presentation.Wpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -9,8 +12,8 @@
         {
             InitializeComponent();
 
-            
-            //UserWallet.NavigationService.Navigate(new UserWalletPage(userWallet));
+            var startAppCommand = new StartAppCommand(new NavigationService());
+            startAppCommand.Execute();
         }
     }
 }

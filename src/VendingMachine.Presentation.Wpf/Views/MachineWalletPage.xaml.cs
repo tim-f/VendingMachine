@@ -3,14 +3,14 @@
 namespace VendingMachine.Presentation.Wpf.Views
 {
     /// <summary>
-    /// Interaction logic for UserWalletPage.xaml
+    /// Interaction logic for MachineWalletPage.xaml
     /// </summary>
-    public sealed partial class UserWalletPage
+    public partial class MachineWalletPage
     {
-        public UserWalletPage(UserWallet userWallet)
+        public MachineWalletPage(MachineWallet machineWallet)
         {
             InitializeComponent();
-            DataContext = userWallet;
+            DataContext = machineWallet;
         }
     }
 }

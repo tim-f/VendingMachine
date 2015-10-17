@@ -55,12 +55,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AlwaysEnabledCommand.cs" />
-    <Compile Include="Commands\CommandComposition.cs" />
     <Compile Include="Commands\CommandWrapper.cs" />
-    <Compile Include="Commands\IChainCommand.cs" />
-    <Compile Include="Navigation\INavigationService.cs" />
+    <Compile Include="Navigation\NavigationService.cs" />
+    <Compile Include="Views\CashDepositPage.xaml.cs">
+      <DependentUpon>CashDepositPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GoodsMenuPage.xaml.cs">
+      <DependentUpon>GoodsMenuPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserWalletPage.xaml.cs">
       <DependentUpon>UserWalletPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MachineWalletPage.xaml.cs">
+      <DependentUpon>MachineWalletPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -74,9 +81,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CashDepositPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GoodsMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserWalletPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MachineWalletPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

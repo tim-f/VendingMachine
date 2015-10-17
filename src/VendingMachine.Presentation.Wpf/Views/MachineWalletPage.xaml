@@ -1,0 +1,23 @@
+﻿<Page x:Class="VendingMachine.Presentation.Wpf.Views.MachineWalletPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:appModel="clr-namespace:VendingMachine.ApplicationLogic.AppModel;assembly=VendingMachine.ApplicationLogic"
+      mc:Ignorable="d" 
+      d:DataContext="{d:DesignInstance appModel:MachineWallet }"
+      >
+
+    <Grid>
+        <ListView ItemsSource="{Binding Coins}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Value, StringFormat={}{0:C}}" Padding="5" />
+                        <TextBlock Text="{Binding Count, StringFormat={}{0} штук}" Padding="5" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
