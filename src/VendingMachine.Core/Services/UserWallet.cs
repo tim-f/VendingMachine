@@ -4,7 +4,7 @@
     {
         private readonly CoinStash _coinStash = new CoinStash();
 
-        public void PutCoinSet(CoinSet coinSet)
+        public void PutChangeBack(CoinSet coinSet)
         {
             _coinStash.Put(coinSet);
         }
@@ -17,6 +17,11 @@
         public decimal CalculateTotalAmount()
         {
             return _coinStash.CalculateTotalAmount();
+        }
+
+        public CoinSet GetAvailableCoins()
+        {
+            return _coinStash.PeekInside();
         }
     }
 }

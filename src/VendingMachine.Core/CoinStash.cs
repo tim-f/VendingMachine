@@ -19,7 +19,7 @@ namespace VendingMachine.Core
 
         }
 
-        public void Put([NotNull] Coin coin, int count)
+        public void Put([NotNull] Coin coin, int count = 1)
         {
             ThrowIfNotSupported(coin);
             Coins[coin] += count;
@@ -35,10 +35,14 @@ namespace VendingMachine.Core
 
         public bool HasCoinsOf([NotNull] Coin coin)
         {
-            ThrowIfNotSupported(coin);
-            return Coins[coin] > ZeroCoinCount;
+            return GetCoinsCountFor(coin) > ZeroCoinCount;
         }
 
+        public int GetCoinsCountFor([NotNull] Coin coin)
+        {
+            ThrowIfNotSupported(coin);
+            return Coins[coin];
+        }
 
         public void Take([NotNull] Coin coin)
         {
@@ -51,9 +55,9 @@ namespace VendingMachine.Core
             Coins[coin] -= SingleCoinPiece;
         }
 
-        public IReadOnlyDictionary<Coin, int> PeekInside()
+        public CoinSet PeekInside()
         {
-            return new ReadOnlyDictionary<Coin, int>(Coins);
+            return CoinSet.FromDictionary(new ReadOnlyDictionary<Coin, int>(Coins));
         }
 
         public decimal CalculateTotalAmount()

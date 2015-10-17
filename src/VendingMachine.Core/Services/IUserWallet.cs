@@ -4,8 +4,10 @@ namespace VendingMachine.Core.Services
 {
     public interface IUserWallet
     {
-        void PutCoinSet([NotNull] CoinSet coinSet);
+        void PutChangeBack([NotNull] CoinSet coinSet);
         void TakeCoin([NotNull] Coin coin);
         decimal CalculateTotalAmount();
+        [NotNull]
+        CoinSet GetAvailableCoins();
     }
 }
