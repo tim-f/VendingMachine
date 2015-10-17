@@ -32,9 +32,11 @@
   <ItemGroup>
     <Compile Include="Coin.cs" />
     <Compile Include="CoinReceptacle.cs" />
+    <Compile Include="CoinSet.cs" />
     <Compile Include="NotSupportedCoinTypeException.cs" />
+    <Compile Include="Services\IUserWallet.cs" />
     <Compile Include="Services\UserWallet.cs" />
-    <Compile Include="SupportedCoinTypesInformant.cs" />
+    <Compile Include="SupportedCoinsInformant.cs" />
     <Compile Include="MachineWallet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartupDefaults.cs" />

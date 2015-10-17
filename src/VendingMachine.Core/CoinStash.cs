@@ -7,16 +7,14 @@ namespace VendingMachine.Core
 {
     public class CoinStash
     {
-        private SupportedCoinTypesInformant SupportedCoinTypesInformant { get; }
         private const int ZeroCoinCount = 0;
         private const int SingleCoinPiece = 1;
 
         private IDictionary<Coin, int> Coins { get; }
 
-        public CoinStash(SupportedCoinTypesInformant supportedCoinTypesInformant)
+        public CoinStash()
         {
-            SupportedCoinTypesInformant = supportedCoinTypesInformant;
-            var coinTypes = supportedCoinTypesInformant.GetSupportedCoinTypes();
+            var coinTypes = SupportedCoinsInformant.GetSupportedCoins();
             Coins = new Dictionary<Coin, int>(coinTypes.ToDictionary(coin => coin, coin => ZeroCoinCount));
 
         }
@@ -27,19 +25,11 @@ namespace VendingMachine.Core
             Coins[coin] += count;
         }
 
-        private void ThrowIfNotSupported(Coin coin)
+        public void Put([NotNull] CoinSet coinSet)
         {
-            if (!SupportedCoinTypesInformant.IsSupported(coin))
+            foreach (var coinGroup in coinSet.Coins)
             {
-                throw new NotSupportedCoinTypeException(coin);
-            }
-        }
-
-        public void Put([NotNull] IReadOnlyDictionary<Coin, int> coins)
-        {
-            foreach (var coinType in coins)
-            {
-                Coins[coinType.Key] += coinType.Value;
+                Put(coinGroup.Key, coinGroup.Value);
             }
         }
 
@@ -69,6 +59,14 @@ namespace VendingMachine.Core
         public decimal CalculateTotalAmount()
         {
             return Coins.Sum(pair => pair.Key.Value * pair.Value);
+        }
+
+        private void ThrowIfNotSupported(Coin coin)
+        {
+            if (!SupportedCoinsInformant.IsSupported(coin))
+            {
+                throw new NotSupportedCoinTypeException(coin);
+            }
         }
     }
 }

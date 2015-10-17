@@ -3,21 +3,21 @@ using System.Linq;
 
 namespace VendingMachine.Core
 {
-    public class SupportedCoinTypesInformant
+    public static class SupportedCoinsInformant
     {
-        private HashSet<Coin> Coins { get; } = new HashSet<Coin>(EnumerateSupportedCoinTypes());
+        private static readonly HashSet<Coin> Coins = new HashSet<Coin>(EnumerateSupportedCoins());
 
-        public IReadOnlyCollection<Coin> GetSupportedCoinTypes()
+        public static IReadOnlyCollection<Coin> GetSupportedCoins()
         {
             return Coins.ToList();
         }
 
-        public bool IsSupported(Coin coin)
+        public static bool IsSupported(Coin coin)
         {
             return Coins.Contains(coin);
         }
 
-        private static IEnumerable<Coin> EnumerateSupportedCoinTypes()
+        private static IEnumerable<Coin> EnumerateSupportedCoins()
         {
             yield return Coin.FromValue(1M);
             yield return Coin.FromValue(2M);

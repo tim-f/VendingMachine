@@ -1,12 +1,22 @@
 ﻿namespace VendingMachine.Core.Services
 {
-    public interface IUserWallet
+    public sealed class UserWallet : IUserWallet
     {
-        void PutCoinSet();
-    }
+        private readonly CoinStash _coinStash = new CoinStash();
 
-    public class UserWallet
-    {
-         
+        public void PutCoinSet(CoinSet coinSet)
+        {
+            _coinStash.Put(coinSet);
+        }
+
+        public void TakeCoin(Coin coin)
+        {
+            _coinStash.Take(coin);
+        }
+
+        public decimal CalculateTotalAmount()
+        {
+            return _coinStash.CalculateTotalAmount();
+        }
     }
 }
