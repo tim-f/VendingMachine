@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 
-namespace VendingMachine.Presentation.Wpf.AppModel
+namespace VendingMachine.ApplicationLogic.AppModel
 {
     public abstract class AppModel : INotifyPropertyChanged
     {

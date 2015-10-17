@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace VendingMachine.Presentation.Wpf.AppModel
+namespace VendingMachine.ApplicationLogic.AppModel
 {
     public sealed class UserWallet : AppModel
     {

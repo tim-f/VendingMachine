@@ -1,9 +1,9 @@
-﻿<Page x:Class="VendingMachine.Presentation.Wpf.UserWalletPage"
+﻿<Page x:Class="VendingMachine.Presentation.Wpf.Views.UserWalletPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:appModel="clr-namespace:VendingMachine.Presentation.Wpf.AppModel"
+      xmlns:appModel="clr-namespace:VendingMachine.ApplicationLogic.AppModel;assembly=VendingMachine.ApplicationLogic"
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance appModel:UserWallet }"
       >

@@ -1,4 +1,4 @@
-﻿namespace VendingMachine.Presentation.Wpf.AppModel
+﻿namespace VendingMachine.ApplicationLogic.AppModel
 {
     public sealed class CoinSet : AppModel
     {

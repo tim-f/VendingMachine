@@ -1,6 +1,6 @@
-﻿using VendingMachine.Presentation.Wpf.AppModel;
+﻿using VendingMachine.ApplicationLogic.AppModel;
 
-namespace VendingMachine.Presentation.Wpf
+namespace VendingMachine.Presentation.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for UserWalletPage.xaml
