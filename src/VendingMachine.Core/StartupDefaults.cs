@@ -6,7 +6,7 @@ namespace VendingMachine.Core
     {
         public static UserWallet CreateDefaultUserWallet()
         {
-            var userWallet = new UserWallet(new CoinSet());
+            var userWallet = new UserWallet(new SupportedCoinTypes());
             userWallet.Put(new Dictionary<Coin, int>(4)
             {
                 { Coin.FromValue(1M), 10 },

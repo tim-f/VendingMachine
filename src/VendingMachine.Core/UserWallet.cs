@@ -12,10 +12,10 @@ namespace VendingMachine.Core
 
         private IDictionary<Coin, int> Coins { get; }
 
-        public UserWallet(CoinSet coinSet)
+        public UserWallet(SupportedCoinTypes supportedCoinTypes)
         {
-            var supportedCoinTypes = coinSet.GetSupportedCoinTypes();
-            Coins = new Dictionary<Coin, int>(supportedCoinTypes.ToDictionary(coin => coin, coin => ZeroCoins));
+            var coinTypes = supportedCoinTypes.GetSupportedCoinTypes();
+            Coins = new Dictionary<Coin, int>(coinTypes.ToDictionary(coin => coin, coin => ZeroCoins));
 
         }
 
