@@ -2,7 +2,7 @@
 {
     public sealed class UserWallet : IUserWallet
     {
-        private readonly CoinStash _coinStash = new CoinStash();
+        private readonly CoinStash _coinStash = StartupDefaults.CreateDefaultUserWallet();
 
         public void PutChangeBack(CoinSet coinSet)
         {
