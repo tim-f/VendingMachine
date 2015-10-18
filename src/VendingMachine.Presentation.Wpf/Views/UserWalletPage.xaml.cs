@@ -12,7 +12,7 @@ namespace VendingMachine.Presentation.Wpf.Views
             InitializeComponent();
         }
 
-        public ICommand DepositCoinCommand => App.CommandFactory.DepositCoinCommand;
+        public ICommand DepositCoinCommand => App.CommandFactory.DepositCoin;
 
     }
 }

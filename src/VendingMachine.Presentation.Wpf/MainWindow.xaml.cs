@@ -9,7 +9,7 @@
         {
             InitializeComponent();
 
-            App.CommandFactory.StartAppCommand.Execute(null);
+            App.CommandFactory.StartApp.Execute(null);
         }
     }
 }
