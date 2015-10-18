@@ -6,15 +6,8 @@ namespace VendingMachine.Presentation.Wpf.Utility
 {
     public abstract class AlwaysEnabledCommand : ICommand
     {
-        bool ICommand.CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        void ICommand.Execute(object parameter)
-        {
-            Execute();
-        }
+        bool ICommand.CanExecute(object parameter) => true;
+        void ICommand.Execute(object parameter) => Execute();
 
         event EventHandler ICommand.CanExecuteChanged
         {
@@ -27,14 +20,11 @@ namespace VendingMachine.Presentation.Wpf.Utility
 
     public abstract class AlwaysEnabledCommand<T> : ICommand
     {
-        bool ICommand.CanExecute(object parameter)
-        {
-            return true;
-        }
+        bool ICommand.CanExecute(object parameter) => true;
 
         void ICommand.Execute(object parameter)
         {
-            Debug.Assert(parameter is T, string.Format("Command parameter is not of type {0}", typeof(T).FullName));
+            Debug.Assert(parameter is T, $"Command parameter is not of type {typeof (T).FullName}");
             Execute((T)parameter);
         }
 
