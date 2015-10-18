@@ -9,14 +9,13 @@ namespace VendingMachine.Core
     public class CoinStash
     {
         private const int ZeroCoinCount = 0;
-        private const int SingleCoinPiece = 1;
 
         private IDictionary<Coin, int> Coins { get; }
 
         public CoinStash()
         {
             var supportedValues = SupportedCoinsInformant.GetSupportedValues();
-            Coins = new Dictionary<Coin, int>(supportedValues.ToDictionary(value => Coin.FromValue(value), coin => ZeroCoinCount));
+            Coins = new Dictionary<Coin, int>(supportedValues.ToDictionary(value => Coin.FromValue(value), _ => ZeroCoinCount));
 
         }
 
@@ -37,9 +36,9 @@ namespace VendingMachine.Core
             }
         }
 
-        public bool HasCoinsOf([NotNull] Coin coin)
+        public bool HasCoinsOf([NotNull] Coin coin, int count = 1)
         {
-            return GetCountFor(coin) > ZeroCoinCount;
+            return GetCountFor(coin) >= count;
         }
 
         public int GetCountFor([NotNull] Coin coin)
@@ -47,14 +46,14 @@ namespace VendingMachine.Core
             return Coins[coin];
         }
 
-        public void Take([NotNull] Coin coin)
+        public void Take([NotNull] Coin coin, int count = 1)
         {
-            if (!HasCoinsOf(coin))
+            if (!HasCoinsOf(coin, count))
             {
                 throw new StashIsOutOfSuchCoinException(coin);
             }
 
-            Coins[coin] -= SingleCoinPiece;
+            Coins[coin] -= count;
         }
 
         public CoinSet PeekInside()
