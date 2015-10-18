@@ -23,11 +23,17 @@ namespace VendingMachine.ApplicationLogic.Commands
         {
             MachineOperations.DepositCoin(Coin.FromValue(parameter));
             var cashDeposit = Visualizer.GetVisualizedModel<CashDepositModel>();
-            var machineWallet = Visualizer.GetVisualizedModel<MachineWalletModel>();
 
             cashDeposit.Amount = MachineOperations.GetDepositAmount();
             cashDeposit.HasPositiveBalance = true;
-            machineWallet.Coins.Single(coin => coin.Value == parameter).Count++;
+
+            var availableCoins = MachineOperations.GetAvailableCoins();
+            var machineWallet = Visualizer.GetVisualizedModel<MachineWalletModel>();
+            machineWallet.Coins.Clear();
+            foreach (var coinInfo in availableCoins.Coins)
+            {
+                machineWallet.Coins.Add(new CoinModel { Value = coinInfo.Key.Value, Count = coinInfo.Value, IsAvailable = coinInfo.Value > 0 });
+            }
         }
     }
 }

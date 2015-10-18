@@ -51,6 +51,7 @@ namespace VendingMachine.Core.Services
             {
                 _coinStash.Take(cashBackCoin.Key, cashBackCoin.Value);
             }
+            DepositAmount = decimal.Zero;
 
             return CoinSet.FromDictionary(cashBackCoins);
         }
