@@ -37,7 +37,6 @@
     <Compile Include="AppModel\MenuItem.cs" />
     <Compile Include="AppModel\UserWallet.cs" />
     <Compile Include="AppModel\MachineWallet.cs" />
-    <Compile Include="Commands\FillUserWalletWithCoinsCommand.cs" />
     <Compile Include="Commands\PrepareUserWalletCommand.cs" />
     <Compile Include="Commands\StartAppCommand.cs" />
     <Compile Include="Navigation\IVisualizer.cs" />
