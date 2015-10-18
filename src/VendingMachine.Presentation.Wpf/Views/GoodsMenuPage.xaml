@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:appModel="clr-namespace:VendingMachine.ApplicationLogic.AppModel;assembly=VendingMachine.ApplicationLogic"
       mc:Ignorable="d" 
-      d:DataContext="{d:DesignInstance appModel:GoodsMenu }"
+      d:DataContext="{d:DesignInstance appModel:GoodsMenuModel }"
       >
 
     <Grid>

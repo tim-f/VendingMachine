@@ -55,8 +55,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Navigation\Visualizer.cs" />
+    <Compile Include="Services.cs" />
     <Compile Include="Utility\AlwaysEnabledCommand.cs" />
     <Compile Include="Utility\CommandWrapper.cs" />
+    <Compile Include="Utility\UiCommandFactory.cs" />
     <Compile Include="Views\CashDepositPage.xaml.cs">
       <DependentUpon>CashDepositPage.xaml</DependentUpon>
     </Compile>
@@ -130,6 +132,10 @@
     <ProjectReference Include="..\VendingMachine.ApplicationLogic\VendingMachine.ApplicationLogic.csproj">
       <Project>{f736beab-92dc-4b1b-9cbd-1e78e2c60b34}</Project>
       <Name>VendingMachine.ApplicationLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VendingMachine.Core\VendingMachine.Core.csproj">
+      <Project>{527FF145-2280-4234-8679-00B4CA6C2C0F}</Project>
+      <Name>VendingMachine.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

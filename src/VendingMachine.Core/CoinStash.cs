@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using JetBrains.Annotations;
@@ -14,14 +15,17 @@ namespace VendingMachine.Core
 
         public CoinStash()
         {
-            var coinTypes = SupportedCoinsInformant.GetSupportedCoins();
-            Coins = new Dictionary<Coin, int>(coinTypes.ToDictionary(coin => coin, coin => ZeroCoinCount));
+            var supportedValues = SupportedCoinsInformant.GetSupportedValues();
+            Coins = new Dictionary<Coin, int>(supportedValues.ToDictionary(value => Coin.FromValue(value), coin => ZeroCoinCount));
 
         }
 
         public void Put([NotNull] Coin coin, int count = 1)
         {
-            ThrowIfNotSupported(coin);
+            if (count < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), "Count must be greater than zero.");
+            }
             Coins[coin] += count;
         }
 
@@ -35,18 +39,16 @@ namespace VendingMachine.Core
 
         public bool HasCoinsOf([NotNull] Coin coin)
         {
-            return GetCoinsCountFor(coin) > ZeroCoinCount;
+            return GetCountFor(coin) > ZeroCoinCount;
         }
 
-        public int GetCoinsCountFor([NotNull] Coin coin)
+        public int GetCountFor([NotNull] Coin coin)
         {
-            ThrowIfNotSupported(coin);
             return Coins[coin];
         }
 
         public void Take([NotNull] Coin coin)
         {
-            ThrowIfNotSupported(coin);
             if (!HasCoinsOf(coin))
             {
                 throw new StashIsOutOfSuchCoinException(coin);
@@ -63,14 +65,6 @@ namespace VendingMachine.Core
         public decimal CalculateTotalAmount()
         {
             return Coins.Sum(pair => pair.Key.Value * pair.Value);
-        }
-
-        private void ThrowIfNotSupported(Coin coin)
-        {
-            if (!SupportedCoinsInformant.IsSupported(coin))
-            {
-                throw new NotSupportedCoinTypeException(coin);
-            }
         }
     }
 }

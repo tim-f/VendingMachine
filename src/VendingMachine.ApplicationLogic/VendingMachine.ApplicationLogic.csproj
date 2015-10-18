@@ -31,13 +31,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppModel\AppModel.cs" />
-    <Compile Include="AppModel\Coin.cs" />
-    <Compile Include="AppModel\CashDeposit.cs" />
-    <Compile Include="AppModel\GoodsMenu.cs" />
-    <Compile Include="AppModel\MenuItem.cs" />
-    <Compile Include="AppModel\UserWallet.cs" />
-    <Compile Include="AppModel\MachineWallet.cs" />
+    <Compile Include="AppModel\CoinModel.cs" />
+    <Compile Include="AppModel\CashDepositModel.cs" />
+    <Compile Include="AppModel\GoodsMenuModel.cs" />
+    <Compile Include="AppModel\MenuItemModel.cs" />
+    <Compile Include="AppModel\UserWalletModel.cs" />
+    <Compile Include="AppModel\MachineWalletModel.cs" />
+    <Compile Include="Commands\PutCoinIntoMachineCommand.cs" />
     <Compile Include="Commands\StartAppCommand.cs" />
+    <Compile Include="Commands\TakeCoinFromUserWalletCommand.cs" />
     <Compile Include="Navigation\IVisualizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\CommandComposition.cs" />
@@ -53,7 +55,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\VendingMachine.Core\VendingMachine.Core.csproj">
+      <Project>{527ff145-2280-4234-8679-00b4ca6c2c0f}</Project>
+      <Name>VendingMachine.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

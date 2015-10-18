@@ -1,6 +1,6 @@
 ﻿namespace VendingMachine.ApplicationLogic.AppModel
 {
-    public sealed class Coin : AppModel
+    public sealed class CoinModel : AppModel
     {
         private int _count;
         private decimal _value;

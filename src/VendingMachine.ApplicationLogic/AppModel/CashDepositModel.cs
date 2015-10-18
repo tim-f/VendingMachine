@@ -1,6 +1,6 @@
 ﻿namespace VendingMachine.ApplicationLogic.AppModel
 {
-    public sealed class CashDeposit : AppModel
+    public sealed class CashDepositModel : AppModel
     {
         private decimal _amount;
 

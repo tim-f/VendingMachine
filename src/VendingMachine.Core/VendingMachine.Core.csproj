@@ -33,13 +33,14 @@
     <Compile Include="Coin.cs" />
     <Compile Include="CoinReceptacle.cs" />
     <Compile Include="CoinSet.cs" />
-    <Compile Include="NotSupportedCoinTypeException.cs" />
+    <Compile Include="NotSupportedValueException.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="Services\IMachineOperations.cs" />
     <Compile Include="Services\IMachineWallet.cs" />
     <Compile Include="Services\IUserWallet.cs" />
+    <Compile Include="Services\MachineWallet.cs" />
     <Compile Include="Services\UserWallet.cs" />
     <Compile Include="SupportedCoinsInformant.cs" />
-    <Compile Include="MachineWallet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartupDefaults.cs" />
     <Compile Include="CoinStash.cs" />

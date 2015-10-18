@@ -11,8 +11,9 @@ namespace VendingMachine.Core
             Value = value;
         }
 
-        internal static Coin FromValue(decimal value)
+        public static Coin FromValue(decimal value)
         {
+            SupportedCoinsInformant.ThrowIfNotSupported(value);
             return new Coin(value);
         }
 

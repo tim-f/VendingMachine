@@ -5,24 +5,32 @@ namespace VendingMachine.Core
 {
     public static class SupportedCoinsInformant
     {
-        private static readonly HashSet<Coin> Coins = new HashSet<Coin>(EnumerateSupportedCoins());
+        private static readonly HashSet<decimal> Coins = new HashSet<decimal>(EnumerateSupportedValues());
 
-        public static IReadOnlyCollection<Coin> GetSupportedCoins()
+        public static IReadOnlyCollection<decimal> GetSupportedValues()
         {
             return Coins.ToList();
         }
 
-        public static bool IsSupported(Coin coin)
+        public static bool IsSupported(decimal value)
         {
-            return Coins.Contains(coin);
+            return Coins.Contains(value);
         }
 
-        private static IEnumerable<Coin> EnumerateSupportedCoins()
+        private static IEnumerable<decimal> EnumerateSupportedValues()
         {
-            yield return Coin.FromValue(1M);
-            yield return Coin.FromValue(2M);
-            yield return Coin.FromValue(5M);
-            yield return Coin.FromValue(10M);
+            yield return 1M;
+            yield return 2M;
+            yield return 5M;
+            yield return 10M;
+        }
+
+        public static void ThrowIfNotSupported(decimal value)
+        {
+            if (!IsSupported(value))
+            {
+                throw new NotSupportedValueException(value);
+            }
         }
     }
 }

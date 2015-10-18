@@ -2,7 +2,7 @@
 
 namespace VendingMachine.ApplicationLogic.AppModel
 {
-    public sealed class MenuItem : AppModel
+    public sealed class MenuItemModel : AppModel
     {
         private string _productName;
         private decimal _price;
