@@ -9,6 +9,8 @@
       >
 
     <Grid>
-        
+        <StackPanel>
+            <TextBlock Text="{Binding Amount, StringFormat=Внесенная сумма: {0:C}}" Padding="5" />
+        </StackPanel>
     </Grid>
 </Page>
