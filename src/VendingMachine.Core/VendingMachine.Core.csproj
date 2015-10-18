@@ -38,6 +38,7 @@
     <Compile Include="Services\IMachineOperations.cs" />
     <Compile Include="Services\IMachineWallet.cs" />
     <Compile Include="Services\IUserWallet.cs" />
+    <Compile Include="Services\MachineOperations.cs" />
     <Compile Include="Services\MachineWallet.cs" />
     <Compile Include="Services\UserWallet.cs" />
     <Compile Include="SupportedCoinsInformant.cs" />
