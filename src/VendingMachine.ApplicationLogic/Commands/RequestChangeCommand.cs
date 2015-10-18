@@ -5,11 +5,11 @@ using VendingMachine.Core.Services;
 
 namespace VendingMachine.ApplicationLogic.Commands
 {
-    public class TakeChangeCommand : IChainCommand<CashDepositModel, CoinSet>
+    public class RequestChangeCommand : IChainCommand<CashDepositModel, CoinSet>
     {
         private IMachineOperations MachineOperations { get; }
 
-        public TakeChangeCommand(IMachineOperations machineOperations)
+        public RequestChangeCommand(IMachineOperations machineOperations)
         {
             MachineOperations = machineOperations;
         }

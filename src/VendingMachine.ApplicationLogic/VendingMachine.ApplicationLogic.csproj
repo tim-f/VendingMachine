@@ -39,7 +39,7 @@
     <Compile Include="AppModel\MachineWalletModel.cs" />
     <Compile Include="Commands\PutCoinIntoMachineCommand.cs" />
     <Compile Include="Commands\StartAppCommand.cs" />
-    <Compile Include="Commands\TakeChangeCommand.cs" />
+    <Compile Include="Commands\RequestChangeCommand.cs" />
     <Compile Include="Commands\TakeCoinFromUserWalletCommand.cs" />
     <Compile Include="Navigation\IVisualizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
