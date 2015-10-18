@@ -10,12 +10,9 @@ namespace VendingMachine.Presentation.Wpf.Views
         public UserWalletPage()
         {
             InitializeComponent();
-
-            //new TakeCoinFromUserWalletCommand(null, null).ContinueWith(new PutCoinIntoMachineCommand())
-            //PutCoinIntoMachineCommand = 
-            DepositCoinCommand = App.CommandFactory.DepositCoinCommand;
         }
 
-        protected ICommand DepositCoinCommand;
+        public ICommand DepositCoinCommand => App.CommandFactory.DepositCoinCommand;
+
     }
 }

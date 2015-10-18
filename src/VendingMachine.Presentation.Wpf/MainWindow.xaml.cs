@@ -1,7 +1,4 @@
-﻿using VendingMachine.ApplicationLogic.Commands;
-using VendingMachine.Presentation.Wpf.Navigation;
-
-namespace VendingMachine.Presentation.Wpf
+﻿namespace VendingMachine.Presentation.Wpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -12,8 +9,7 @@ namespace VendingMachine.Presentation.Wpf
         {
             InitializeComponent();
 
-            var startAppCommand = new StartAppCommand(new Visualizer());
-            startAppCommand.Execute();
+            App.CommandFactory.StartAppCommand.Execute(null);
         }
     }
 }

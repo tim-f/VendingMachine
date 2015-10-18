@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:appModel="clr-namespace:VendingMachine.ApplicationLogic.AppModel;assembly=VendingMachine.ApplicationLogic"
+      Name="Self"
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance appModel:UserWalletModel }"
       >
@@ -13,13 +14,14 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Button IsEnabled="{Binding IsAvailable}" Command="{Binding ElementName=DepositCoinCommand}" CommandParameter="{Binding}">
+                        <Button IsEnabled="{Binding IsAvailable}"
+                                Command="{Binding ElementName=Self, Path=DepositCoinCommand}" CommandParameter="{Binding}">
                             <TextBlock Text="{Binding Value, StringFormat={}{0:C}}" Padding="5" />
                         </Button>
                         <TextBlock Text="{Binding Count, StringFormat={}{0} штук}" Padding="5" />
-                        <Button Content="Внести" IsEnabled="{Binding IsAvailable}" Padding="5" />
+                        <Button Content="Внести" IsEnabled="{Binding IsAvailable}" Padding="5"
+                                Command="{Binding ElementName=Self, Path=DepositCoinCommand}" CommandParameter="{Binding}"/>
                     </StackPanel>
-
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

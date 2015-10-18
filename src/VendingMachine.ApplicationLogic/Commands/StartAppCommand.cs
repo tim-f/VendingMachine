@@ -1,16 +1,20 @@
 ﻿using VendingMachine.ApplicationLogic.AppModel;
 using VendingMachine.ApplicationLogic.Navigation;
 using VendingMachine.ApplicationLogic.Utility;
+using VendingMachine.Core;
+using VendingMachine.Core.Services;
 
 namespace VendingMachine.ApplicationLogic.Commands
 {
     public class StartAppCommand : IChainCommand
     {
         private IVisualizer Visualizer { get; }
+        private IUserWallet UserWallet { get; }
 
-        public StartAppCommand(IVisualizer visualizer)
+        public StartAppCommand(IVisualizer visualizer, IUserWallet userWallet)
         {
             Visualizer = visualizer;
+            UserWallet = userWallet;
         }
 
         public void Execute()
@@ -24,10 +28,11 @@ namespace VendingMachine.ApplicationLogic.Commands
         private void PrepareUserWalletPage()
         {
             var userWallet = Visualizer.Visualize<UserWalletModel>();
-            userWallet.Coins.Add(new CoinModel { Value = 1M, Count = 10, IsAvailable = true });
-            userWallet.Coins.Add(new CoinModel { Value = 2M, Count = 10, IsAvailable = true });
-            userWallet.Coins.Add(new CoinModel { Value = 5M, Count = 10, IsAvailable = true });
-            userWallet.Coins.Add(new CoinModel { Value = 10M, Count = 10, IsAvailable = true });
+            var availableCoins = UserWallet.GetAvailableCoins();
+            foreach (var coinInfo in availableCoins.Coins)
+            {
+                userWallet.Coins.Add(new CoinModel { Value = coinInfo.Key.Value, Count = coinInfo.Value, IsAvailable = coinInfo.Value > 0 });
+            }
         }
 
         private void PrepareCashDepositPage()

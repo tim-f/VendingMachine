@@ -55,7 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Navigation\Visualizer.cs" />
-    <Compile Include="Services.cs" />
+    <Compile Include="AppServices.cs" />
     <Compile Include="Utility\AlwaysEnabledCommand.cs" />
     <Compile Include="Utility\CommandWrapper.cs" />
     <Compile Include="Utility\UiCommandFactory.cs" />
