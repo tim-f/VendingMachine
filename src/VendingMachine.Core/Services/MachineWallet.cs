@@ -5,7 +5,7 @@ namespace VendingMachine.Core.Services
 {
     public sealed class MachineWallet : IMachineWallet
     {
-        private readonly CoinStash _coinStash = new CoinStash();
+        private readonly CoinStash _coinStash = StartupDefaults.CreateDefaultMachineWallet();
         private decimal DepositAmount { get; set; }
 
         public void PutCoins(CoinSet coinSet)

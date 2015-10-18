@@ -18,9 +18,18 @@ namespace VendingMachine.Core
             return userWallet;
         }
 
-        public static void CreateDefaultMachineWallet()
+        public static CoinStash CreateDefaultMachineWallet()
         {
-            
+            var stash = new CoinStash();
+            var coinSet = CoinSet.FromDictionary(new Dictionary<Coin, int>(4)
+            {
+                { Coin.FromValue(1M), 100 },
+                { Coin.FromValue(2M), 100 },
+                { Coin.FromValue(5M), 100 },
+                { Coin.FromValue(10M), 100 },
+            });
+            stash.Put(coinSet);
+            return stash;
         }
     }
 }
