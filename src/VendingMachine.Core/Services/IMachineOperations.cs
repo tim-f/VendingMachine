@@ -5,5 +5,6 @@
         void DepositCoin(Coin coin);
         decimal GetDepositAmount();
         CoinSet RetrieveChange();
+        CoinSet GetAvailableCoins();
     }
 }

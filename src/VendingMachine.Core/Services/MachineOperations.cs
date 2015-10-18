@@ -18,5 +18,10 @@
         {
             return MachineWallet.RequestCashBack();
         }
+
+        public CoinSet GetAvailableCoins()
+        {
+            return MachineWallet.GetAvailableCoins();
+        }
     }
 }
