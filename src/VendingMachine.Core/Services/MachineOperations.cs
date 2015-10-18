@@ -2,7 +2,7 @@
 {
     public class MachineOperations : IMachineOperations
     {
-        private IMachineWallet MachineWallet { get; } = new MachineWallet();
+        private MachineWallet MachineWallet { get; } = new MachineWallet();
 
         public void DepositCoin(Coin coin)
         {

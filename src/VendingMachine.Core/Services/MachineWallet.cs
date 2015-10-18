@@ -3,15 +3,10 @@ using System.Linq;
 
 namespace VendingMachine.Core.Services
 {
-    public sealed class MachineWallet : IMachineWallet
+    public sealed class MachineWallet
     {
         private readonly CoinStash _coinStash = StartupDefaults.CreateDefaultMachineWallet();
         private decimal DepositAmount { get; set; }
-
-        public void PutCoins(CoinSet coinSet)
-        {
-            _coinStash.Put(coinSet);
-        }
 
         public void DepositCoin(Coin coin)
         {
