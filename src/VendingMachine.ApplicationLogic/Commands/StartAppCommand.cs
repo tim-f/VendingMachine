@@ -10,11 +10,13 @@ namespace VendingMachine.ApplicationLogic.Commands
     {
         private IVisualizer Visualizer { get; }
         private IUserWallet UserWallet { get; }
+        private IMachineOperations MachineOperations { get; }
 
-        public StartAppCommand(IVisualizer visualizer, IUserWallet userWallet)
+        public StartAppCommand(IVisualizer visualizer, IUserWallet userWallet, IMachineOperations machineOperations)
         {
             Visualizer = visualizer;
             UserWallet = userWallet;
+            MachineOperations = machineOperations;
         }
 
         public void Execute()
@@ -39,15 +41,17 @@ namespace VendingMachine.ApplicationLogic.Commands
         {
             var cashDeposit = Visualizer.Visualize<CashDepositModel>();
             cashDeposit.Amount = 0M;
+            cashDeposit.HasPositiveBalance = false;
         }
 
         private void PrepareMachineWalletPage()
         {
+            var availableCoins = MachineOperations.GetAvailableCoins();
             var machineWallet = Visualizer.Visualize<MachineWalletModel>();
-            machineWallet.Coins.Add(new CoinModel { Value = 1M, Count = 100, IsAvailable = true });
-            machineWallet.Coins.Add(new CoinModel { Value = 2M, Count = 100, IsAvailable = true });
-            machineWallet.Coins.Add(new CoinModel { Value = 5M, Count = 100, IsAvailable = true });
-            machineWallet.Coins.Add(new CoinModel { Value = 10M, Count = 100, IsAvailable = true });
+            foreach (var coinInfo in availableCoins.Coins)
+            {
+                machineWallet.Coins.Add(new CoinModel { Value = coinInfo.Key.Value, Count = coinInfo.Value, IsAvailable = coinInfo.Value > 0 });
+            }
         }
 
         private void PrepareGoodsMenuPage()

@@ -13,7 +13,8 @@ namespace VendingMachine.Presentation.Wpf.Utility
             Services = services;
         }
 
-        public ICommand StartApp => new StartAppCommand(Services.Visualizer, Services.UserWallet).Wrap();
+        public ICommand StartApp => new StartAppCommand(Services.Visualizer, Services.UserWallet, Services.MachineOperations)
+            .Wrap();
 
         public ICommand DepositCoin => new TakeCoinFromUserWalletCommand(Services.UserWallet)
             .ContinueWith(new PutCoinIntoMachineWalletCommand(Services.MachineOperations, Services.Visualizer))
