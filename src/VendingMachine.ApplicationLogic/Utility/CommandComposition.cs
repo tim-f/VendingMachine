@@ -17,6 +17,11 @@ namespace VendingMachine.ApplicationLogic.Utility
             return forkChainCommand;
         }
 
+        public static IChainCommand<object> StartWith(IChainCommand command)
+        {
+            return new AnonymousChainedCommand<object>(o => command.Execute());
+        }
+
         public static IChainCommand<object> StartWith<TInput>(Func<TInput> source, IChainCommand<TInput> command)
         {
             return new AnonymousChainedCommand<object>(o => command.Execute(source()));

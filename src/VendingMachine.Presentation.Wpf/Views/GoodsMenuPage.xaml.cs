@@ -1,16 +1,13 @@
-﻿using VendingMachine.ApplicationLogic.AppModel;
-
-namespace VendingMachine.Presentation.Wpf.Views
+﻿namespace VendingMachine.Presentation.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for GoodsMenuPage.xaml
     /// </summary>
     public partial class GoodsMenuPage
     {
-        public GoodsMenuPage(GoodsMenu goodsMenu)
+        public GoodsMenuPage()
         {
             InitializeComponent();
-            DataContext = goodsMenu;
         }
     }
 }

@@ -38,8 +38,9 @@
     <Compile Include="AppModel\UserWallet.cs" />
     <Compile Include="AppModel\MachineWallet.cs" />
     <Compile Include="Commands\FillUserWalletWithCoinsCommand.cs" />
+    <Compile Include="Commands\PrepareUserWalletCommand.cs" />
     <Compile Include="Commands\StartAppCommand.cs" />
-    <Compile Include="Navigation\INavigationService.cs" />
+    <Compile Include="Navigation\IVisualizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\CommandComposition.cs" />
     <Compile Include="Utility\IChainCommand.cs" />

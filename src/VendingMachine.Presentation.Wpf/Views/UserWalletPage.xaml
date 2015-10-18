@@ -9,8 +9,8 @@
       >
 
     <Grid>
-        <ListView ItemsSource="{Binding Coins}">
-            <ListView.ItemTemplate>
+        <ItemsControl ItemsSource="{Binding Coins}">
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Button IsEnabled="{Binding IsAvailable}">
@@ -21,7 +21,7 @@
                     </StackPanel>
 
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Page>

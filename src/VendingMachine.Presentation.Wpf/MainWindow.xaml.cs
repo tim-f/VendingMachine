@@ -12,7 +12,7 @@ namespace VendingMachine.Presentation.Wpf
         {
             InitializeComponent();
 
-            var startAppCommand = new StartAppCommand(new NavigationService());
+            var startAppCommand = new StartAppCommand(new Visualizer());
             startAppCommand.Execute();
         }
     }

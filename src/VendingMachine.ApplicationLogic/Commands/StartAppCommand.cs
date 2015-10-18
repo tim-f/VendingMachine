@@ -6,19 +6,52 @@ namespace VendingMachine.ApplicationLogic.Commands
 {
     public class StartAppCommand : IChainCommand
     {
-        private INavigationService NavigationService { get; }
+        private IVisualizer Visualizer { get; }
 
-        public StartAppCommand(INavigationService navigationService)
+        public StartAppCommand(IVisualizer visualizer)
         {
-            NavigationService = navigationService;
+            Visualizer = visualizer;
         }
 
         public void Execute()
         {
-            NavigationService.ShowUserWallet(new UserWallet());
-            NavigationService.ShowCashDeposit(new CashDeposit());
-            NavigationService.ShowMachineWallet(new MachineWallet());
-            NavigationService.ShowGoodsMenu(new GoodsMenu());
+            PrepareUserWalletPage();
+            PrepareCashDepositPage();
+            PrepareMachineWalletPage();
+            PrepareGoodsMenuPage();
+        }
+
+        private void PrepareUserWalletPage()
+        {
+            var userWallet = Visualizer.Visualize<UserWallet>();
+            userWallet.Coins.Add(new Coin { Value = 1M, Count = 10, IsAvailable = true });
+            userWallet.Coins.Add(new Coin { Value = 2M, Count = 10, IsAvailable = true });
+            userWallet.Coins.Add(new Coin { Value = 5M, Count = 10, IsAvailable = true });
+            userWallet.Coins.Add(new Coin { Value = 10M, Count = 10, IsAvailable = true });
+        }
+
+        private void PrepareCashDepositPage()
+        {
+            var cashDeposit = Visualizer.Visualize<CashDeposit>();
+            cashDeposit.Amount = 0M;
+        }
+
+        private void PrepareMachineWalletPage()
+        {
+            var machineWallet = Visualizer.Visualize<MachineWallet>();
+            machineWallet.Coins.Add(new Coin { Value = 1M, Count = 100, IsAvailable = true });
+            machineWallet.Coins.Add(new Coin { Value = 2M, Count = 100, IsAvailable = true });
+            machineWallet.Coins.Add(new Coin { Value = 5M, Count = 100, IsAvailable = true });
+            machineWallet.Coins.Add(new Coin { Value = 10M, Count = 100, IsAvailable = true });
+        }
+
+        private void PrepareGoodsMenuPage()
+        {
+            var goodsMenu = Visualizer.Visualize<GoodsMenu>();
+            goodsMenu.MenuItems.Add(new MenuItem { ProductName = "Чай", Price = 13M, Count = 10, IsAvailable = true });
+            goodsMenu.MenuItems.Add(new MenuItem { ProductName = "Кофе", Price = 18M, Count = 20, IsAvailable = true });
+            goodsMenu.MenuItems.Add(new MenuItem { ProductName = "Кофе с молоком", Price = 21M, Count = 20, IsAvailable = true });
+            goodsMenu.MenuItems.Add(new MenuItem { ProductName = "Сок", Price = 35M, Count = 15, IsAvailable = true });
         }
     }
 }

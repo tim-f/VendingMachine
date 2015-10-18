@@ -1,16 +1,13 @@
-﻿using VendingMachine.ApplicationLogic.AppModel;
-
-namespace VendingMachine.Presentation.Wpf.Views
+﻿namespace VendingMachine.Presentation.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for MachineWalletPage.xaml
     /// </summary>
     public partial class MachineWalletPage
     {
-        public MachineWalletPage(MachineWallet machineWallet)
+        public MachineWalletPage()
         {
             InitializeComponent();
-            DataContext = machineWallet;
         }
     }
 }

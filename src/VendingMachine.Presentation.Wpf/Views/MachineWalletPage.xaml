@@ -9,15 +9,15 @@
       >
 
     <Grid>
-        <ListView ItemsSource="{Binding Coins}">
-            <ListView.ItemTemplate>
+        <ItemsControl ItemsSource="{Binding Coins}">
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Value, StringFormat={}{0:C}}" Padding="5" />
                         <TextBlock Text="{Binding Count, StringFormat={}{0} штук}" Padding="5" />
                     </StackPanel>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Page>
