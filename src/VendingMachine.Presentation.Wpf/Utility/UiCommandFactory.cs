@@ -16,7 +16,7 @@ namespace VendingMachine.Presentation.Wpf.Utility
         public ICommand StartApp => new StartAppCommand(Services.Visualizer, Services.UserWallet).Wrap();
 
         public ICommand DepositCoin => new TakeCoinFromUserWalletCommand(Services.UserWallet)
-            .ContinueWith(new PutCoinIntoMachineCommand(Services.MachineOperations, Services.Visualizer))
+            .ContinueWith(new PutCoinIntoMachineWalletCommand(Services.MachineOperations, Services.Visualizer))
             .Wrap();
 
         public ICommand TakeChange => new RequestChangeCommand(Services.MachineOperations).Wrap();

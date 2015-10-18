@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using JetBrains.Annotations;
 using VendingMachine.ApplicationLogic.AppModel;
 using VendingMachine.ApplicationLogic.Navigation;
@@ -9,12 +8,12 @@ using VendingMachine.Core.Services;
 
 namespace VendingMachine.ApplicationLogic.Commands
 {
-    public class PutCoinIntoMachineCommand : IChainCommand<decimal>
+    public class PutCoinIntoMachineWalletCommand : IChainCommand<decimal>
     {
         private IMachineOperations MachineOperations { get; }
         private IVisualizer Visualizer { get; }
 
-        public PutCoinIntoMachineCommand([NotNull] IMachineOperations machineOperations, [NotNull] IVisualizer visualizer)
+        public PutCoinIntoMachineWalletCommand([NotNull] IMachineOperations machineOperations, [NotNull] IVisualizer visualizer)
         {
             MachineOperations = machineOperations;
             Visualizer = visualizer;
