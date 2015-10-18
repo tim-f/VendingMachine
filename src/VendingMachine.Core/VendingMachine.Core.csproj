@@ -34,6 +34,7 @@
     <Compile Include="CoinReceptacle.cs" />
     <Compile Include="CoinSet.cs" />
     <Compile Include="NotSupportedCoinTypeException.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Services\IMachineWallet.cs" />
     <Compile Include="Services\IUserWallet.cs" />
     <Compile Include="Services\UserWallet.cs" />
