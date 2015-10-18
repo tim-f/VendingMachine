@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using VendingMachine.ApplicationLogic.Utility;
 
-namespace VendingMachine.Presentation.Wpf.Commands
+namespace VendingMachine.Presentation.Wpf.Utility
 {
     public static class CommandWrapper
     {

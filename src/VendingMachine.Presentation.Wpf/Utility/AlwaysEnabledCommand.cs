@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace VendingMachine.Presentation.Wpf.Commands
+namespace VendingMachine.Presentation.Wpf.Utility
 {
     public abstract class AlwaysEnabledCommand : ICommand
     {

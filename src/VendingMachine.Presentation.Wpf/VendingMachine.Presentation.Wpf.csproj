@@ -54,9 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\AlwaysEnabledCommand.cs" />
-    <Compile Include="Commands\CommandWrapper.cs" />
     <Compile Include="Navigation\NavigationService.cs" />
+    <Compile Include="Utility\AlwaysEnabledCommand.cs" />
+    <Compile Include="Utility\CommandWrapper.cs" />
     <Compile Include="Views\CashDepositPage.xaml.cs">
       <DependentUpon>CashDepositPage.xaml</DependentUpon>
     </Compile>
@@ -131,6 +131,9 @@
       <Project>{f736beab-92dc-4b1b-9cbd-1e78e2c60b34}</Project>
       <Name>VendingMachine.ApplicationLogic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
