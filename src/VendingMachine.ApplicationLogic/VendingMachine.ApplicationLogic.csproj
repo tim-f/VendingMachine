@@ -34,6 +34,7 @@
     <Compile Include="AppModel\Coin.cs" />
     <Compile Include="AppModel\CashDeposit.cs" />
     <Compile Include="AppModel\GoodsMenu.cs" />
+    <Compile Include="AppModel\MenuItem.cs" />
     <Compile Include="AppModel\UserWallet.cs" />
     <Compile Include="AppModel\MachineWallet.cs" />
     <Compile Include="Commands\FillUserWalletWithCoinsCommand.cs" />

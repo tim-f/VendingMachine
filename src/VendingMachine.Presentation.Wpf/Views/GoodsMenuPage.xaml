@@ -9,6 +9,19 @@
       >
 
     <Grid>
-        
+        <ListView ItemsSource="{Binding MenuItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Button IsEnabled="{Binding IsAvailable}">
+                            <TextBlock Text="{Binding ProductName}" Padding="5" />
+                        </Button>
+                        <TextBlock Text="{Binding Price, StringFormat= Стоимость {0:C}}" Padding="5" />
+                        <TextBlock Text="{Binding Count, StringFormat= (Осталось {0} порций)}" Padding="5" />
+                        <Button Content="Купить" IsEnabled="{Binding IsAvailable}" Padding="5" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
