@@ -1,4 +1,7 @@
-﻿namespace VendingMachine.Core.Services
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace VendingMachine.Core.Services
 {
     public sealed class MachineWallet : IMachineWallet
     {
@@ -18,7 +21,38 @@
 
         public CoinSet RequestCashBack()
         {
-            throw new System.NotImplementedException();
+            var availableCoinSet = GetAvailableCoins();
+            var orderedCoins = availableCoinSet.Coins.OrderByDescending(coin => coin.Key.Value);
+
+            var cashBackCoins = new Dictionary<Coin, int>();
+
+            decimal sumToGiveBack = DepositAmount;
+
+            foreach (var coin in orderedCoins)
+            {
+                if (sumToGiveBack < coin.Key.Value)
+                {
+                    continue;
+                }
+
+                for (int numberOfCoins = 1; numberOfCoins <= coin.Value; numberOfCoins++)
+                {
+                    sumToGiveBack -= coin.Key.Value;
+                    if (sumToGiveBack < coin.Key.Value)
+                    {
+                        cashBackCoins.Add(coin.Key, numberOfCoins);
+
+                        break;
+                    }
+                }
+            }
+
+            foreach (var cashBackCoin in cashBackCoins)
+            {
+                _coinStash.Take(cashBackCoin.Key, cashBackCoin.Value);
+            }
+
+            return CoinSet.FromDictionary(cashBackCoins);
         }
 
         public decimal GetDepositAmount()
