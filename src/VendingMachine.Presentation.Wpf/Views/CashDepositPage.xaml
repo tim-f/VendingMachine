@@ -12,7 +12,8 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="{Binding Amount, StringFormat=Внесенная сумма: {0:C}}" Padding="5" />
-            <Button Content="Сдача" Padding="5" Command="{Binding ElementName=Self, Path=TakeChangeCommand}" CommandParameter="{Binding}" />
+            <Button Content="Сдача" IsEnabled="{Binding HasPositiveBalance}" Padding="5"
+                    Command="{Binding ElementName=Self, Path=TakeChangeCommand}" CommandParameter="{Binding}" />
         </StackPanel>
     </Grid>
 </Page>

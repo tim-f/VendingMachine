@@ -26,6 +26,7 @@ namespace VendingMachine.ApplicationLogic.Commands
             var machineWallet = Visualizer.GetVisualizedModel<MachineWalletModel>();
 
             cashDeposit.Amount = MachineOperations.GetDepositAmount();
+            cashDeposit.HasPositiveBalance = true;
             machineWallet.Coins.Single(coin => coin.Value == parameter).Count++;
         }
     }

@@ -18,6 +18,7 @@ namespace VendingMachine.ApplicationLogic.Commands
         {
             CoinSet change = MachineOperations.RetrieveChange();
             parameter.Amount = decimal.Zero;
+            parameter.HasPositiveBalance = false;
             return change;
         }
     }
