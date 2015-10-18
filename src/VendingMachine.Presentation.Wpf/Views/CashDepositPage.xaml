@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:appModel="clr-namespace:VendingMachine.ApplicationLogic.AppModel;assembly=VendingMachine.ApplicationLogic"
+      Name="Self"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance appModel:CashDepositModel }"
       >
@@ -11,7 +12,7 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="{Binding Amount, StringFormat=Внесенная сумма: {0:C}}" Padding="5" />
-            <Button Content="Сдача" Padding="5" />
+            <Button Content="Сдача" Padding="5" Command="{Binding ElementName=Self, Path=TakeChangeCommand}" CommandParameter="{Binding}" />
         </StackPanel>
     </Grid>
 </Page>

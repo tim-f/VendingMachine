@@ -19,6 +19,8 @@ namespace VendingMachine.Presentation.Wpf.Utility
             .ContinueWith(new PutCoinIntoMachineWalletCommand(Services.MachineOperations, Services.Visualizer))
             .Wrap();
 
-        public ICommand TakeChange => new RequestChangeCommand(Services.MachineOperations).Wrap();
+        public ICommand TakeChange => new RequestChangeCommand(Services.MachineOperations)
+            .ContinueWith(new PutChangeIntoUserWalletCommand(Services.UserWallet, Services.Visualizer))
+            .Wrap();
     }
 }
