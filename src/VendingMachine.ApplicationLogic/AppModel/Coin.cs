@@ -4,7 +4,7 @@
     {
         private int _count;
         private decimal _value;
-        private bool _hasAny;
+        private bool _isAvailable;
 
         public decimal Value
         {
@@ -28,13 +28,13 @@
             }
         }
 
-        public bool HasAny
+        public bool IsAvailable
         {
-            get { return _hasAny; }
+            get { return _isAvailable; }
             set
             {
-                if (_hasAny == value) return;
-                _hasAny = value;
+                if (_isAvailable == value) return;
+                _isAvailable = value;
                 OnPropertyChanged();
             }
         }
