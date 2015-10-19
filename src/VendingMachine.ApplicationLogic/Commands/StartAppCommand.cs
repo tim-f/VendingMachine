@@ -1,4 +1,5 @@
-﻿using VendingMachine.ApplicationLogic.AppModel;
+﻿using System;
+using VendingMachine.ApplicationLogic.AppModel;
 using VendingMachine.ApplicationLogic.Navigation;
 using VendingMachine.ApplicationLogic.Utility;
 using VendingMachine.Core;
@@ -57,10 +58,10 @@ namespace VendingMachine.ApplicationLogic.Commands
         private void PrepareGoodsMenuPage()
         {
             var goodsMenu = Navigator.Navigate<GoodsMenuModel>();
-            goodsMenu.MenuItems.Add(new MenuItemModel { ProductName = "Чай", Price = 13M, Count = 10, IsAvailable = true });
-            goodsMenu.MenuItems.Add(new MenuItemModel { ProductName = "Кофе", Price = 18M, Count = 20, IsAvailable = true });
-            goodsMenu.MenuItems.Add(new MenuItemModel { ProductName = "Кофе с молоком", Price = 21M, Count = 20, IsAvailable = true });
-            goodsMenu.MenuItems.Add(new MenuItemModel { ProductName = "Сок", Price = 35M, Count = 15, IsAvailable = true });
+            goodsMenu.MenuItems.Add(new MenuItemModel { ProductId = Guid.NewGuid(), ProductName = "Чай", Price = 13M, Count = 10, IsAvailable = true });
+            goodsMenu.MenuItems.Add(new MenuItemModel { ProductId = Guid.NewGuid(), ProductName = "Кофе", Price = 18M, Count = 20, IsAvailable = true });
+            goodsMenu.MenuItems.Add(new MenuItemModel { ProductId = Guid.NewGuid(), ProductName = "Кофе с молоком", Price = 21M, Count = 20, IsAvailable = true });
+            goodsMenu.MenuItems.Add(new MenuItemModel { ProductId = Guid.NewGuid(), ProductName = "Сок", Price = 35M, Count = 15, IsAvailable = true });
         }
     }
 }

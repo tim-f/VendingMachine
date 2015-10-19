@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 
 namespace VendingMachine.ApplicationLogic.AppModel
 {
@@ -8,6 +9,8 @@ namespace VendingMachine.ApplicationLogic.AppModel
         private decimal _price;
         private int _count;
         private bool _isAvailable;
+
+        public Guid ProductId { get; set; }
 
         [NotNull]
         public string ProductName
