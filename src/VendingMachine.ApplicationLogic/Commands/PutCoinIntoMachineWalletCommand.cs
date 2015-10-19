@@ -27,6 +27,11 @@ namespace VendingMachine.ApplicationLogic.Commands
             cashDeposit.Amount = MachineOperations.GetDepositAmount();
             cashDeposit.HasPositiveBalance = true;
 
+            UpdateMachineWallet();
+        }
+
+        private void UpdateMachineWallet()
+        {
             var availableCoins = MachineOperations.GetAvailableCoins();
             var machineWallet = Visualizer.GetVisualizedModel<MachineWalletModel>();
             machineWallet.Coins.Clear();
