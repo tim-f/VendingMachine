@@ -57,6 +57,7 @@ namespace VendingMachine.ApplicationLogic.Commands
 
         private void PrepareGoodsMenuPage()
         {
+
             var goodsMenu = Navigator.Navigate<GoodsMenuModel>();
             goodsMenu.MenuItems.Add(new MenuItemModel { ProductId = Guid.NewGuid(), ProductName = "Чай", Price = 13M, Count = 10, IsAvailable = true });
             goodsMenu.MenuItems.Add(new MenuItemModel { ProductId = Guid.NewGuid(), ProductName = "Кофе", Price = 18M, Count = 20, IsAvailable = true });

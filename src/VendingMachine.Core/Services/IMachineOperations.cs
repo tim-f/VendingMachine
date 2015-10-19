@@ -1,4 +1,6 @@
-﻿namespace VendingMachine.Core.Services
+﻿using System;
+
+namespace VendingMachine.Core.Services
 {
     public interface IMachineOperations
     {
@@ -6,5 +8,7 @@
         decimal GetDepositAmount();
         CoinSet RetrieveChange();
         CoinSet GetAvailableCoins();
+        bool HasProduct(Guid productId);
+        void SellProduct(Guid productId);
     }
 }

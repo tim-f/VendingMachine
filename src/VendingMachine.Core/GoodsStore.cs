@@ -9,6 +9,12 @@ namespace VendingMachine.Core
     {
         private readonly Dictionary<Guid, ProductTray> _products = StartupDefaults.CreateDefaultProductTrayList().ToDictionary(pt => pt.Id);
 
+        public bool HasProduct(Guid productId)
+        {
+            var productTray = GetProductTray(productId);
+            return productTray.HasItems;
+        }
+
         public void TakeProductItem(Guid productId)
         {
             var productTray = GetProductTray(productId);

@@ -1,8 +1,11 @@
-﻿namespace VendingMachine.Core.Services
+﻿using System;
+
+namespace VendingMachine.Core.Services
 {
     public class MachineOperations : IMachineOperations
     {
         private MachineWallet MachineWallet { get; } = new MachineWallet();
+        private GoodsStore GoodsStore { get; } = new GoodsStore();
 
         public void DepositCoin(Coin coin)
         {
@@ -22,6 +25,16 @@
         public CoinSet GetAvailableCoins()
         {
             return MachineWallet.GetAvailableCoins();
+        }
+
+        public bool HasProduct(Guid productId)
+        {
+            return GoodsStore.HasProduct(productId);
+        }
+
+        public void SellProduct(Guid productId)
+        {
+            GoodsStore.TakeProductItem(productId);
         }
     }
 }
