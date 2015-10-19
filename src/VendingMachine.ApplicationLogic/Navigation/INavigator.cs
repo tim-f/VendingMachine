@@ -4,5 +4,6 @@
     {
         TAppModel Navigate<TAppModel>() where TAppModel : AppModel.AppModel, new();
         TAppModel GetNavigatedModel<TAppModel>() where TAppModel : AppModel.AppModel;
+        void ShowMessage(string message);
     }
 }

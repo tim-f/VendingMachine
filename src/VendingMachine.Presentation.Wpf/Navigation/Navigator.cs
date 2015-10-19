@@ -75,5 +75,14 @@ namespace VendingMachine.Presentation.Wpf.Navigation
             return (TAppModel)appModel;
         }
 
+        public void ShowMessage(string message)
+        {
+            var window = new MessageWindow
+            {
+                Title = "Информация",
+                Message = message
+            };
+            window.ShowDialog();
+        }
     }
 }
