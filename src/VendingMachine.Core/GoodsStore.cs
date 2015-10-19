@@ -15,6 +15,12 @@ namespace VendingMachine.Core
             return productTray.HasItems;
         }
 
+        public decimal GetProductPrice(Guid productId)
+        {
+            var productTray = GetProductTray(productId);
+            return productTray.Price;
+        }
+
         public void TakeProductItem(Guid productId)
         {
             var productTray = GetProductTray(productId);

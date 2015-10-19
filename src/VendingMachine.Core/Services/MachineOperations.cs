@@ -38,6 +38,13 @@ namespace VendingMachine.Core.Services
             return GoodsStore.HasProduct(productId);
         }
 
+        public bool CanBuyProduct(Guid productId)
+        {
+            var depositAmount = MachineWallet.GetDepositAmount();
+            var productPrice = GoodsStore.GetProductPrice(productId);
+            return depositAmount >= productPrice;
+        }
+
         public void SellProduct(Guid productId)
         {
             GoodsStore.TakeProductItem(productId);

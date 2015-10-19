@@ -15,6 +15,7 @@ namespace VendingMachine.Core.Services
         [NotNull, ItemNotNull]
         IReadOnlyCollection<ProductInfo> GetProductList();
         bool HasProduct(Guid productId);
+        bool CanBuyProduct(Guid productId);
         void SellProduct(Guid productId);
     }
 }
