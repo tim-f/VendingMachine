@@ -23,5 +23,9 @@ namespace VendingMachine.Presentation.Wpf.Utility
         public ICommand TakeChange => new RequestChangeCommand(Services.MachineOperations, Services.Navigator)
             .ContinueWith(new PutChangeIntoUserWalletCommand(Services.UserWallet, Services.Navigator))
             .Wrap();
+
+        public ICommand BuyProduct => new TryBuyProductCommand(Services.MachineOperations, Services.Navigator)
+            .ContinueWith(new ShowSellOperationResultMessageCommand(Services.Navigator))
+            .Wrap();
     }
 }
