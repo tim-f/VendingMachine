@@ -18,5 +18,6 @@ namespace VendingMachine.Core
 
         public decimal Price { get; }
         public int Count { get; }
+        public bool IsAvailable => Count > 0;
     }
 }
