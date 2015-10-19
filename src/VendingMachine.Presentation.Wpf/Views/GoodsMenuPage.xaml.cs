@@ -1,4 +1,6 @@
-﻿namespace VendingMachine.Presentation.Wpf.Views
+﻿using System.Windows.Input;
+
+namespace VendingMachine.Presentation.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for GoodsMenuPage.xaml
@@ -9,5 +11,7 @@
         {
             InitializeComponent();
         }
+
+        public ICommand BuyProductCommand => App.CommandFactory.BuyProduct;
     }
 }

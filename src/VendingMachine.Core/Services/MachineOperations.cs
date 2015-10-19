@@ -1,8 +1,12 @@
-﻿namespace VendingMachine.Core.Services
+﻿using System;
+using System.Collections.Generic;
+
+namespace VendingMachine.Core.Services
 {
     public class MachineOperations : IMachineOperations
     {
         private MachineWallet MachineWallet { get; } = new MachineWallet();
+        private GoodsStore GoodsStore { get; } = new GoodsStore();
 
         public void DepositCoin(Coin coin)
         {
@@ -22,6 +26,30 @@
         public CoinSet GetAvailableCoins()
         {
             return MachineWallet.GetAvailableCoins();
+        }
+
+        public IReadOnlyCollection<ProductInfo> GetProductList()
+        {
+            return GoodsStore.GetAvailableProducts();
+        }
+
+        public bool HasProduct(Guid productId)
+        {
+            return GoodsStore.HasProduct(productId);
+        }
+
+        public bool CanBuyProduct(Guid productId)
+        {
+            var depositAmount = MachineWallet.GetDepositAmount();
+            var productPrice = GoodsStore.GetProductPrice(productId);
+            return depositAmount >= productPrice;
+        }
+
+        public void SellProduct(Guid productId)
+        {
+            var productPrice = GoodsStore.GetProductPrice(productId);
+            MachineWallet.SubtractFromDeposit(productPrice);
+            GoodsStore.TakeProductItem(productId);
         }
     }
 }
