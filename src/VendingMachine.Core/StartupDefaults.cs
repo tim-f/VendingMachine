@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VendingMachine.Core
 {
@@ -30,6 +31,17 @@ namespace VendingMachine.Core
             });
             stash.Put(coinSet);
             return stash;
+        }
+
+        public static IReadOnlyCollection<ProductTray> CreateDefaultProductTrayList()
+        {
+            return new List<ProductTray>
+            {
+                new ProductTray(Guid.NewGuid(), "Чай", 13M, 10),
+                new ProductTray(Guid.NewGuid(), "Кофе", 18M, 20),
+                new ProductTray(Guid.NewGuid(), "Кофе с молоком", 21M, 20),
+                new ProductTray(Guid.NewGuid(), "Сок", 35M, 15),
+            };
         }
     }
 }

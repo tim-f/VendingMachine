@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 
 namespace VendingMachine.Core
 {
     public class GoodsStore
     {
-        private readonly Dictionary<Guid, ProductTray> _products = new Dictionary<Guid, ProductTray>();
+        private readonly Dictionary<Guid, ProductTray> _products = StartupDefaults.CreateDefaultProductTrayList().ToDictionary(pt => pt.Id);
 
         public void TakeProductItem(Guid productId)
         {
