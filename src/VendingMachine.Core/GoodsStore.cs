@@ -22,6 +22,14 @@ namespace VendingMachine.Core
 
         }
 
+        public IReadOnlyCollection<ProductInfo> GetAvailableProducts()
+        {
+            return _products.Values
+                .Select(tray => new ProductInfo(tray.Id, tray.Name, tray.Price, tray.Count))
+                .ToList()
+                .AsReadOnly();
+        }
+
         [NotNull]
         private ProductTray GetProductTray(Guid productId)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VendingMachine.Core.Services
 {
@@ -25,6 +26,11 @@ namespace VendingMachine.Core.Services
         public CoinSet GetAvailableCoins()
         {
             return MachineWallet.GetAvailableCoins();
+        }
+
+        public IReadOnlyCollection<ProductInfo> GetProductList()
+        {
+            return GoodsStore.GetAvailableProducts();
         }
 
         public bool HasProduct(Guid productId)

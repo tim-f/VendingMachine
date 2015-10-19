@@ -5,6 +5,7 @@ namespace VendingMachine.Core
 {
     public sealed class CoinSet
     {
+        [ItemNotNull]
         public IReadOnlyDictionary<Coin, int> Coins { get; }
 
         private CoinSet([NotNull] IReadOnlyDictionary<Coin, int> coins)

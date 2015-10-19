@@ -37,6 +37,7 @@
     <Compile Include="GoodsStore.cs" />
     <Compile Include="MachineWallet.cs" />
     <Compile Include="NotSupportedValueException.cs" />
+    <Compile Include="ProductInfo.cs" />
     <Compile Include="ProductTray.cs" />
     <Compile Include="Services\IMachineOperations.cs" />
     <Compile Include="Services\IUserWallet.cs" />
