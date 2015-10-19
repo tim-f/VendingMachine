@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace VendingMachine.Core
@@ -10,8 +11,8 @@ namespace VendingMachine.Core
 
         public void DepositCoin(Coin coin)
         {
-            DepositAmount += coin.Value;
             _coinStash.Put(coin);
+            DepositAmount += coin.Value;
         }
 
         public CoinSet RequestCashBack()
@@ -54,6 +55,15 @@ namespace VendingMachine.Core
         public decimal GetDepositAmount()
         {
             return DepositAmount;
+        }
+
+        public void SubtractFromDeposit(decimal amount)
+        {
+            if (amount > DepositAmount)
+            {
+                throw new InvalidOperationException("Requested amount is more than available on deposit.");
+            }
+            DepositAmount -= amount;
         }
 
         public CoinSet GetAvailableCoins()

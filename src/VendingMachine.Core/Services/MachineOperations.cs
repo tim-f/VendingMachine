@@ -47,6 +47,8 @@ namespace VendingMachine.Core.Services
 
         public void SellProduct(Guid productId)
         {
+            var productPrice = GoodsStore.GetProductPrice(productId);
+            MachineWallet.SubtractFromDeposit(productPrice);
             GoodsStore.TakeProductItem(productId);
         }
     }

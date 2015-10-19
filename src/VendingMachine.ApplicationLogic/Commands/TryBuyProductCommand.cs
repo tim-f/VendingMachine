@@ -27,6 +27,7 @@ namespace VendingMachine.ApplicationLogic.Commands
 
             MachineOperations.SellProduct(parameter.ProductId);
             UpdateMenu(parameter);
+            UpdateDepositAmount();
             return true;
         }
 
