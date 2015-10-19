@@ -13,15 +13,15 @@ namespace VendingMachine.Presentation.Wpf.Utility
             Services = services;
         }
 
-        public ICommand StartApp => new StartAppCommand(Services.Visualizer, Services.UserWallet, Services.MachineOperations)
+        public ICommand StartApp => new StartAppCommand(Services.Navigator, Services.UserWallet, Services.MachineOperations)
             .Wrap();
 
         public ICommand DepositCoin => new TakeCoinFromUserWalletCommand(Services.UserWallet)
-            .ContinueWith(new PutCoinIntoMachineWalletCommand(Services.MachineOperations, Services.Visualizer))
+            .ContinueWith(new PutCoinIntoMachineWalletCommand(Services.MachineOperations, Services.Navigator))
             .Wrap();
 
-        public ICommand TakeChange => new RequestChangeCommand(Services.MachineOperations, Services.Visualizer)
-            .ContinueWith(new PutChangeIntoUserWalletCommand(Services.UserWallet, Services.Visualizer))
+        public ICommand TakeChange => new RequestChangeCommand(Services.MachineOperations, Services.Navigator)
+            .ContinueWith(new PutChangeIntoUserWalletCommand(Services.UserWallet, Services.Navigator))
             .Wrap();
     }
 }

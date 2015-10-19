@@ -11,18 +11,18 @@ namespace VendingMachine.ApplicationLogic.Commands
     public class PutCoinIntoMachineWalletCommand : IChainCommand<decimal>
     {
         private IMachineOperations MachineOperations { get; }
-        private IVisualizer Visualizer { get; }
+        private INavigator Navigator { get; }
 
-        public PutCoinIntoMachineWalletCommand([NotNull] IMachineOperations machineOperations, [NotNull] IVisualizer visualizer)
+        public PutCoinIntoMachineWalletCommand([NotNull] IMachineOperations machineOperations, [NotNull] INavigator navigator)
         {
             MachineOperations = machineOperations;
-            Visualizer = visualizer;
+            Navigator = navigator;
         }
 
         public void Execute(decimal parameter)
         {
             MachineOperations.DepositCoin(Coin.FromValue(parameter));
-            var cashDeposit = Visualizer.GetVisualizedModel<CashDepositModel>();
+            var cashDeposit = Navigator.GetNavigatedModel<CashDepositModel>();
 
             cashDeposit.Amount = MachineOperations.GetDepositAmount();
             cashDeposit.HasPositiveBalance = true;
@@ -33,7 +33,7 @@ namespace VendingMachine.ApplicationLogic.Commands
         private void UpdateMachineWallet()
         {
             var availableCoins = MachineOperations.GetAvailableCoins();
-            var machineWallet = Visualizer.GetVisualizedModel<MachineWalletModel>();
+            var machineWallet = Navigator.GetNavigatedModel<MachineWalletModel>();
             machineWallet.Coins.Clear();
             foreach (var coinInfo in availableCoins.Coins)
             {

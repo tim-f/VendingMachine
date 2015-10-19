@@ -42,7 +42,7 @@
     <Compile Include="Commands\StartAppCommand.cs" />
     <Compile Include="Commands\RequestChangeCommand.cs" />
     <Compile Include="Commands\TakeCoinFromUserWalletCommand.cs" />
-    <Compile Include="Navigation\IVisualizer.cs" />
+    <Compile Include="Navigation\INavigator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\CommandComposition.cs" />
     <Compile Include="Utility\IChainCommand.cs" />

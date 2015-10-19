@@ -9,7 +9,7 @@ using VendingMachine.Presentation.Wpf.Views;
 
 namespace VendingMachine.Presentation.Wpf.Navigation
 {
-    internal sealed class Visualizer : IVisualizer
+    internal sealed class Navigator : INavigator
     {
         [NotNull]
         private MainWindow MainWindow => ((MainWindow)Application.Current.MainWindow);
@@ -28,7 +28,7 @@ namespace VendingMachine.Presentation.Wpf.Navigation
 
         private Dictionary<Type, AppModel> VisualizedAppModels { get; } = new Dictionary<Type, AppModel>();
 
-        public TAppModel Visualize<TAppModel>() where TAppModel : AppModel, new()
+        public TAppModel Navigate<TAppModel>() where TAppModel : AppModel, new()
         {
             Frame hostFrame;
             Page hostView;
@@ -65,7 +65,7 @@ namespace VendingMachine.Presentation.Wpf.Navigation
             return appModel;
         }
 
-        public TAppModel GetVisualizedModel<TAppModel>() where TAppModel : AppModel
+        public TAppModel GetNavigatedModel<TAppModel>() where TAppModel : AppModel
         {
             AppModel appModel;
             if (!VisualizedAppModels.TryGetValue(typeof(TAppModel), out appModel))

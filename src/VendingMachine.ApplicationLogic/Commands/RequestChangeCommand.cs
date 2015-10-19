@@ -9,12 +9,12 @@ namespace VendingMachine.ApplicationLogic.Commands
     public class RequestChangeCommand : IChainCommand<CashDepositModel, CoinSet>
     {
         private IMachineOperations MachineOperations { get; }
-        private IVisualizer Visualizer { get; }
+        private INavigator Navigator { get; }
 
-        public RequestChangeCommand(IMachineOperations machineOperations, IVisualizer visualizer)
+        public RequestChangeCommand(IMachineOperations machineOperations, INavigator navigator)
         {
             MachineOperations = machineOperations;
-            Visualizer = visualizer;
+            Navigator = navigator;
         }
 
         public CoinSet Execute(CashDepositModel parameter)
@@ -30,7 +30,7 @@ namespace VendingMachine.ApplicationLogic.Commands
         private void UpdateMachineWallet()
         {
             var availableCoins = MachineOperations.GetAvailableCoins();
-            var machineWallet = Visualizer.GetVisualizedModel<MachineWalletModel>();
+            var machineWallet = Navigator.GetNavigatedModel<MachineWalletModel>();
             machineWallet.Coins.Clear();
             foreach (var coinInfo in availableCoins.Coins)
             {

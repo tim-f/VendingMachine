@@ -8,6 +8,6 @@ namespace VendingMachine.Presentation.Wpf
     {
         public IUserWallet UserWallet { get; } = new UserWallet();
         public IMachineOperations MachineOperations { get; } = new MachineOperations();
-        public IVisualizer Visualizer { get; } = new Visualizer();
+        public INavigator Navigator { get; } = new Navigator();
     }
 }

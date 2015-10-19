@@ -8,13 +8,13 @@ namespace VendingMachine.ApplicationLogic.Commands
 {
     public class StartAppCommand : IChainCommand
     {
-        private IVisualizer Visualizer { get; }
+        private INavigator Navigator { get; }
         private IUserWallet UserWallet { get; }
         private IMachineOperations MachineOperations { get; }
 
-        public StartAppCommand(IVisualizer visualizer, IUserWallet userWallet, IMachineOperations machineOperations)
+        public StartAppCommand(INavigator navigator, IUserWallet userWallet, IMachineOperations machineOperations)
         {
-            Visualizer = visualizer;
+            Navigator = navigator;
             UserWallet = userWallet;
             MachineOperations = machineOperations;
         }
@@ -29,7 +29,7 @@ namespace VendingMachine.ApplicationLogic.Commands
 
         private void PrepareUserWalletPage()
         {
-            var userWallet = Visualizer.Visualize<UserWalletModel>();
+            var userWallet = Navigator.Navigate<UserWalletModel>();
             var availableCoins = UserWallet.GetAvailableCoins();
             foreach (var coinInfo in availableCoins.Coins)
             {
@@ -39,7 +39,7 @@ namespace VendingMachine.ApplicationLogic.Commands
 
         private void PrepareCashDepositPage()
         {
-            var cashDeposit = Visualizer.Visualize<CashDepositModel>();
+            var cashDeposit = Navigator.Navigate<CashDepositModel>();
             cashDeposit.Amount = 0M;
             cashDeposit.HasPositiveBalance = false;
         }
@@ -47,7 +47,7 @@ namespace VendingMachine.ApplicationLogic.Commands
         private void PrepareMachineWalletPage()
         {
             var availableCoins = MachineOperations.GetAvailableCoins();
-            var machineWallet = Visualizer.Visualize<MachineWalletModel>();
+            var machineWallet = Navigator.Navigate<MachineWalletModel>();
             foreach (var coinInfo in availableCoins.Coins)
             {
                 machineWallet.Coins.Add(new CoinModel { Value = coinInfo.Key.Value, Count = coinInfo.Value, IsAvailable = coinInfo.Value > 0 });
@@ -56,7 +56,7 @@ namespace VendingMachine.ApplicationLogic.Commands
 
         private void PrepareGoodsMenuPage()
         {
-            var goodsMenu = Visualizer.Visualize<GoodsMenuModel>();
+            var goodsMenu = Navigator.Navigate<GoodsMenuModel>();
             goodsMenu.MenuItems.Add(new MenuItemModel { ProductName = "Чай", Price = 13M, Count = 10, IsAvailable = true });
             goodsMenu.MenuItems.Add(new MenuItemModel { ProductName = "Кофе", Price = 18M, Count = 20, IsAvailable = true });
             goodsMenu.MenuItems.Add(new MenuItemModel { ProductName = "Кофе с молоком", Price = 21M, Count = 20, IsAvailable = true });

@@ -54,7 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Navigation\Visualizer.cs" />
+    <Compile Include="Navigation\Navigator.cs" />
     <Compile Include="AppServices.cs" />
     <Compile Include="Utility\AlwaysEnabledCommand.cs" />
     <Compile Include="Utility\CommandWrapper.cs" />

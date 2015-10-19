@@ -9,12 +9,12 @@ namespace VendingMachine.ApplicationLogic.Commands
     public class PutChangeIntoUserWalletCommand : IChainCommand<CoinSet>
     {
         private IUserWallet UserWallet { get; }
-        private IVisualizer Visualizer { get; }
+        private INavigator Navigator { get; }
 
-        public PutChangeIntoUserWalletCommand(IUserWallet userWallet, IVisualizer visualizer)
+        public PutChangeIntoUserWalletCommand(IUserWallet userWallet, INavigator navigator)
         {
             UserWallet = userWallet;
-            Visualizer = visualizer;
+            Navigator = navigator;
         }
 
         public void Execute(CoinSet parameter)
@@ -22,7 +22,7 @@ namespace VendingMachine.ApplicationLogic.Commands
             UserWallet.PutChangeBack(parameter);
             var availableCoins = UserWallet.GetAvailableCoins();
 
-            var userWalletModel = Visualizer.GetVisualizedModel<UserWalletModel>();
+            var userWalletModel = Navigator.GetNavigatedModel<UserWalletModel>();
             userWalletModel.Coins.Clear();
             foreach (var coinInfo in availableCoins.Coins)
             {
