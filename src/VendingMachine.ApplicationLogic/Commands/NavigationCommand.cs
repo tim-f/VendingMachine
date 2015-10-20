@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using VendingMachine.ApplicationLogic.AppModel;
 using VendingMachine.ApplicationLogic.Navigation;
+using VendingMachine.Core.Services;
 
 namespace VendingMachine.ApplicationLogic.Commands
 {
@@ -15,19 +17,16 @@ namespace VendingMachine.ApplicationLogic.Commands
 
         public async Task<NavigationResult> Execute(TAppModel parameter)
         {
-            BeginNavigation(parameter);
+            Subscribe(parameter);
 
-            using (Disposable.Create(EndNavigation, parameter))
+            using (Disposable.Create(Unsubscribe, parameter))
             {
                 return await Navigator.NavigateAsync(parameter);
             }
         }
 
-        protected abstract void BeginNavigation(TAppModel model);
-        protected abstract void EndNavigation(TAppModel model);
-
-        
-        
+        protected abstract void Subscribe(TAppModel model);
+        protected abstract void Unsubscribe(TAppModel model);
 
         private class Disposable : IDisposable
         {
@@ -49,6 +48,26 @@ namespace VendingMachine.ApplicationLogic.Commands
             {
                 return new Disposable(dispose, parameter);
             }
+        }
+    }
+
+    class NavigateToUserWallet : NavigationCommand<UserWalletModel>
+    {
+        private readonly IUserWallet _userWallet;
+
+        public NavigateToUserWallet(INavigator navigator, IUserWallet userWallet) : base(navigator)
+        {
+            _userWallet = userWallet;
+        }
+
+        protected override void Subscribe(UserWalletModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void Unsubscribe(UserWalletModel model)
+        {
+            throw new NotImplementedException();
         }
     }
 }
