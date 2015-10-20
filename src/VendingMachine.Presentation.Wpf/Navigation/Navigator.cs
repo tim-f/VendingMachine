@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using JetBrains.Annotations;
@@ -83,6 +84,11 @@ namespace VendingMachine.Presentation.Wpf.Navigation
                 Message = message
             };
             window.ShowDialog();
+        }
+
+        public Task<NavigationResult> NavigateAsync<TAppModel>(TAppModel model) where TAppModel : AppModel
+        {
+            throw new NotImplementedException();
         }
     }
 }
