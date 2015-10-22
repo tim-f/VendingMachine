@@ -19,7 +19,7 @@ namespace VendingMachine.ApplicationLogic.Commands
         {
             Subscribe(parameter);
 
-            using (Disposable.Create(Unsubscribe, parameter))
+            using (AnonymousDisposable.Create(Unsubscribe, parameter))
             {
                 return await Navigator.NavigateAsync(parameter);
             }
@@ -28,12 +28,12 @@ namespace VendingMachine.ApplicationLogic.Commands
         protected abstract void Subscribe(TAppModel model);
         protected abstract void Unsubscribe(TAppModel model);
 
-        private class Disposable : IDisposable
+        private class AnonymousDisposable : IDisposable
         {
             private readonly Action<TAppModel> _dispose;
             private readonly TAppModel _parameter;
 
-            public Disposable(Action<TAppModel> dispose, TAppModel parameter)
+            private AnonymousDisposable(Action<TAppModel> dispose, TAppModel parameter)
             {
                 _dispose = dispose;
                 _parameter = parameter;
@@ -46,7 +46,7 @@ namespace VendingMachine.ApplicationLogic.Commands
 
             public static IDisposable Create(Action<TAppModel> dispose, TAppModel parameter)
             {
-                return new Disposable(dispose, parameter);
+                return new AnonymousDisposable(dispose, parameter);
             }
         }
     }
