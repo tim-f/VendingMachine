@@ -88,7 +88,44 @@ namespace VendingMachine.Presentation.Wpf.Navigation
 
         public Task<NavigationResult> NavigateAsync<TAppModel>(TAppModel model) where TAppModel : AppModel
         {
-            throw new NotImplementedException();
+            var taskCompletionSource = new TaskCompletionSource<NavigationResult>();
+
+            Frame hostFrame;
+            Page hostView;
+
+            if (typeof(TAppModel) == typeof(UserWalletModel))
+            {
+                hostFrame = UserWalletFrame;
+                hostView = new UserWalletPage();
+            }
+            else if (typeof(TAppModel) == typeof(MachineWalletModel))
+            {
+                hostFrame = MachineWalletFrame;
+                hostView = new MachineWalletPage();
+            }
+            else if (typeof(TAppModel) == typeof(GoodsMenuModel))
+            {
+                hostFrame = GoodsMenuFrame;
+                hostView = new GoodsMenuPage();
+            }
+            else if (typeof(TAppModel) == typeof(CashDepositModel))
+            {
+                hostFrame = CashDepositFrame;
+                hostView = new CashDepositPage();
+            }
+            else
+            {
+                throw new InvalidOperationException("Unsupported AppModel type.");
+            }
+
+            hostView.DataContext = model;
+            hostView.Unloaded += (sender, args) =>
+            {
+                taskCompletionSource.SetResult(new NavigationResult());
+            };
+            hostFrame.Navigate(hostView);
+
+            return taskCompletionSource.Task;
         }
     }
 }
