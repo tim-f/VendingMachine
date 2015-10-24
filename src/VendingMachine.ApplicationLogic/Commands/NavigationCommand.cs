@@ -17,16 +17,16 @@ namespace VendingMachine.ApplicationLogic.Commands
 
         public async Task<NavigationResult> Execute(TAppModel parameter)
         {
-            Subscribe(parameter);
+            OnNavigatedTo(parameter);
 
-            using (AnonymousDisposable.Create(Unsubscribe, parameter))
+            using (AnonymousDisposable.Create(OnNavigatedFrom, parameter))
             {
                 return await Navigator.NavigateAsync(parameter);
             }
         }
 
-        protected abstract void Subscribe(TAppModel model);
-        protected abstract void Unsubscribe(TAppModel model);
+        protected abstract void OnNavigatedTo(TAppModel model);
+        protected abstract void OnNavigatedFrom(TAppModel model);
 
         private class AnonymousDisposable : IDisposable
         {
@@ -60,12 +60,12 @@ namespace VendingMachine.ApplicationLogic.Commands
             _userWallet = userWallet;
         }
 
-        protected override void Subscribe(UserWalletModel model)
+        protected override void OnNavigatedTo(UserWalletModel model)
         {
             throw new NotImplementedException();
         }
 
-        protected override void Unsubscribe(UserWalletModel model)
+        protected override void OnNavigatedFrom(UserWalletModel model)
         {
             throw new NotImplementedException();
         }
